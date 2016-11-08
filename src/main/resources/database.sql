@@ -27,6 +27,7 @@ create table projects(
 drop table if exists risks;
 create table risks(
 	risk_id int auto_increment primary key,
+    risk_project_id int not null,
     risk_info varchar(512) not null,
     risk_probability int default 0 comment '0为低，1为中，2为高',
     risk_impact int default 0 comment '0为低，1为严重性一般，2为严重性高',
@@ -39,4 +40,8 @@ create table risks(
 drop table if exists risk_status;
 create table risk_status(
 	risk_status_id int auto_increment primary key,
+    risk_status_risk_id int default null,
+    risk_status_info varchar(512) not null,
+    risk_status_created_by int not null,
+    risk_status_created_at timestamp default current_timestamp
 )default charset = utf8;
