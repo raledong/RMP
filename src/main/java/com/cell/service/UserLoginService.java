@@ -3,7 +3,7 @@ package com.cell.service;
 import com.cell.model.User;
 import com.cell.viewmodel.SignupForm;
 
-public interface UserLogin {
+public interface UserLoginService {
 	
 	
 	/**

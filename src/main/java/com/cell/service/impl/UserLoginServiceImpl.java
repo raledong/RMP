@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 
 import com.cell.dao.UserDao;
 import com.cell.model.User;
-import com.cell.service.UserLogin;
+import com.cell.service.UserLoginService;
 import com.cell.viewmodel.SignupForm;
 
 @Service
-public class UserLoginImpl implements UserLogin{
+public class UserLoginServiceImpl implements UserLoginService{
 
 	@Autowired
 	private UserDao userDao;
