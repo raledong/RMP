@@ -11,7 +11,6 @@ public class RoleConverter implements AttributeConverter<Role, Integer>{
 	public Integer convertToDatabaseColumn(Role attribute) {
 		if(attribute == null)
 			return null;
-		
 		return attribute.getCode();
 	}
 
@@ -19,7 +18,6 @@ public class RoleConverter implements AttributeConverter<Role, Integer>{
 	public Role convertToEntityAttribute(Integer dbData) {
 		if(dbData == null)
 			return null;
-		
 		return Role.fromCode(dbData);
 	}
 

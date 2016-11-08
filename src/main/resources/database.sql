@@ -18,12 +18,13 @@ create table projects(
     
 )default charset = utf8;
 
--- drop table if exists project_programmer;
--- create table projects_programmers(
--- 	project_id int not null,
---     programmer_id int not null,
---     primary key(project_id, programmer_id)
--- );
+drop table if exists projects_programmers;
+create table projects_programmers(
+	project_id int not null,
+    programmer_id int not null,
+    primary key(project_id, programmer_id)
+);
+
 drop table if exists risks;
 create table risks(
 	risk_id int auto_increment primary key,
@@ -45,3 +46,4 @@ create table risk_status(
     risk_status_created_by int not null,
     risk_status_created_at timestamp default current_timestamp
 )default charset = utf8;
+
