@@ -40,7 +40,8 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
-			<scope>provided</scope>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/servlet-api.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
