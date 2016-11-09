@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>RMP</groupId>
-  <artifactId>RMP</artifactId>
+  <groupId>RMP2</groupId>
+  <artifactId>RMP2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>RMP</name>
+  <name>RMP2</name>
   <description>...</description>
   <!--<url>114.115.218.231</url>-->
 	<properties>
@@ -215,6 +215,14 @@
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
+		<dependency>    
+         		<groupId>javax.servlet</groupId>    
+       			<artifactId>servlet-api</artifactId>    
+        		<version>2.5</version>    
+        		<scope>provided</scope>    
+    		</dependency>
+
 	</dependencies>
 
 </project>
