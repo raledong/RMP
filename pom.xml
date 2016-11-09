@@ -1,11 +1,11 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>RMP2</groupId>
-  <artifactId>RMP2</artifactId>
+  <groupId>RMP</groupId>
+  <artifactId>RMP</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>RMP2</name>
+  <name>RMP</name>
   <description>...</description>
   <!--<url>114.115.218.231</url>-->
 	<properties>
