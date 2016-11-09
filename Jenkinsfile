@@ -1,6 +1,6 @@
 node {
     stage('SCM') {
-        git 'https://github.com/raledong/RiskManagementProject.git'
+        git 'https://github.com/raledong/RMP.git'
     }
     
     stage('QA') {
