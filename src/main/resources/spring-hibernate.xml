@@ -15,9 +15,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/riskmanagement?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
+			value="jdbc:mysql://114.115.218.231:3306/riskmanagement?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true" />
+		<property name="username" value="cell" />
+		<property name="password" value="cell2016" />
 	</bean>
 
 	<!-- 配置sessionFactory -->
