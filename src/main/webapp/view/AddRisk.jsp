@@ -113,7 +113,7 @@
         <div class="col-xs-8">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">项目<i value="projectId"></i>的风险项</h3>
+              <h3 class="box-title">项目rmp的风险项</h3>
             </div>
             <!-- /.box-header -->
             
@@ -175,24 +175,29 @@
               	  	<div class="form-group col-md-12">
               	  		<label>可能性</label>
               	  		<select id="riskProbability" name="riskProbability" class="form-control" >
-              	  		<option value="0">0</option>
-              	  		<option value="1">1</option>
-              	  		<option value="2">2</option>
+              	  		<option value="low">low</option>
+              	  		<option value="medium">medium</option>
+              	  		<option value="high">high</option>
               	  		</select>
               	  	</div>
               	  	
               	  	<div class="form-group col-md-12">
               	  		<label>影响程度</label>
               	  		<select id="riskImpact" name="riskImpact" class="form-control" >
-              	  		<option value="0">0</option>
-              	  		<option value="1">1</option>
-              	  		<option value="2">2</option>
+              	  		<option value="low">low</option>
+              	  		<option value="medium">medium</option>
+              	  		<option value="high">high</option>
               	  		</select>
               	  	</div>
               	  	
               	  	<div class="form-group col-md-12">
               	  		<label>触发器／阈值</label>
               	  	  	<input type="text" id="riskTrigger" name="riskTrigger" class="form-control"/>
+              	  	</div>
+              	  	
+              	  	<div class="form-group col-md-12">
+              	  		<label>跟踪者</label>
+              	  	  	<input type="text" id="riskFollowedBy" name="riskFollowedBy" class="form-control"/>
               	  	</div>
               	  	
               	  </div>

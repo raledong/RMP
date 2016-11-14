@@ -1,5 +1,7 @@
 package com.cell.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +23,16 @@ public class ProjectManagementServiceImpl implements ProjectManagementService {
 
 	@Override
 	public void createProject(ProjectForm project) {
-		// TODO Auto-generated method stub		
 	}
 
 	@Override
 	public void addProgrammer(int projectId, int programmerId) {
 		projectDao.addProgrammer(projectId, programmerId);
+	}
+
+	@Override
+	public List<Project> getAllProjects() {
+		return projectDao.findAll();
 	}
 
 	

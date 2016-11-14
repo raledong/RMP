@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8"></meta>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"></meta>
 <title>风险管理</title>
@@ -116,7 +115,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">项目<i value="projectId"></i>的风险项</h3>
+              <h3 class="box-title">项目rmp的风险项</h3>
               <a href="/RMP/jsp/addRisk" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <!-- /.box-header -->

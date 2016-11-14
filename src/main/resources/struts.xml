@@ -18,6 +18,12 @@
           	<result name="success">/view/Login.jsp</result>
           </action>
           <action name="signin" class="LoginAction" method="signin">
+          	<result name="success" type="redirect">show</result>
+          </action>
+          <action name="show" class="ProjectAction" method="showProjects">
+ 			<result name="success" type="redirect">showProjects</result>
+ 		</action>
+          <action name="showProjects" class="ProjectAction" method="showProjects">
           	<result name="success">/view/Projects.jsp</result>
           </action>
           

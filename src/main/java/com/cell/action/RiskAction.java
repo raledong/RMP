@@ -71,7 +71,7 @@ public class RiskAction extends BaseAction{
         risk.setTrigger(riskTrigger);
         risk.setCreatedAt(new Date());
         risk.setCreatedBy(1);
-        risk.setFollowedBy(1);
+        risk.setFollowedBy(Integer.parseInt(riskFollowedBy));
         riskManagementService.createRisk(risk);
         return SUCCESS;
     }

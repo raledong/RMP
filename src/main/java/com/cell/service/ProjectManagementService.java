@@ -1,5 +1,7 @@
 package com.cell.service;
 
+import java.util.List;
+
 import com.cell.model.Project;
 import com.cell.viewmodel.ProjectForm;
 
@@ -11,5 +13,7 @@ public interface ProjectManagementService {
 	
 	//添加程序员
 	public void addProgrammer(int projectId, int programmerId);
+	
+	public List<Project> getAllProjects();
 	
 }

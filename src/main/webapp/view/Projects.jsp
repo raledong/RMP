@@ -11,12 +11,16 @@
  
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="/RMP/bootstrap/dist/css/bootstrap.min.css">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <!-- Ionicons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<!-- jvectormap -->
+<link rel="stylesheet" href="/RMP/bootstrap/AdminLTE-2.3.7/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
 <!-- DataTables -->
 <link rel="stylesheet" href="/RMP/bootstrap/AdminLTE-2.3.7/plugins/datatables/dataTables.bootstrap.css">
 <!-- Theme style -->
@@ -24,12 +28,6 @@
 <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="/RMP/bootstrap/AdminLTE-2.3.7/dist/css/skins/_all-skins.min.css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 
 
@@ -111,38 +109,40 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">项目</h3>
-              <a href="/RMP/jsp/manageRisk" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+              <a href="/RMP/jsp/addProject" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <!-- /.box-header -->
             
             <div class="box-body">
+            <input type="hidden" id=""/>
               <table id="projects" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>项目编号</th>
-                  <th>项目名称</th>
+                  <th>编号</th>
+                  <th>名称</th>
+                  <th>描述</th>
                   <th>创建时间</th>
                   <th>创建者</th>
-                  <th>描述</th>
-                  <th>参与者</th>
+                  <th>Risks</th>
                 </tr>
                 </thead>
                 <tbody>
+                <s:iterator value="projectList" id="project">
                 	<tr>
-                		<td>1</td>
-                		<td>rmp</td>
-                		<td>2016-11-10</td>
-                		<td>1</td>
-                		<td>描述</td>
-                		<td>参与者</td>
+                		<td><s:property value="id"/></td>
+                		<td><s:property value="name"/></td>
+                		<td><s:property value="description"/></td>
+                		<td><s:property value="createdAt"/></td>
+                		<td><s:property value="createdBy"/></td>
+                		<td><a href="/RMP/view/manageRisk">manageRisks</a></td>
                 	</tr>
+                </s:iterator>
                 </tbody>
               </table>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-
         </div>
         <!-- /.col -->
       </div>
@@ -177,7 +177,7 @@
   $(function () {
     $("#projects").DataTable();
   });
+  
 </script>
 </body>
 </html>
-
