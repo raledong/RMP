@@ -8,12 +8,19 @@
       <package name="webpage" namespace=""
           extends="struts-default">
           <!-- 首页 -->
-          <action name="" class="TestAction" method="welcome">
+          <!-- <action name="" class="TestAction" method="welcome">
           	<result name="success">/welcome.jsp</result>
           </action>
           <action name="welcome" class="TestAction" method="welcome">
           	<result name="success">/welcome.jsp</result>
+          </action> -->
+          <action name="" class="LoginAction" method="signin">
+          	<result name="success">/view/Login.jsp</result>
           </action>
+          <action name="signin" class="LoginAction" method="signin">
+          	<result name="success">/view/Projects.jsp</result>
+          </action>
+          
       </package>
       <!-- ajax数据 -->
       <package name="json" namespace="/JSON" extends="struts-default, json-default">
@@ -34,6 +41,9 @@
       
       
       <package name="jsp" namespace="" extends="struts-default">
+      
+      
+      	
          
           
          

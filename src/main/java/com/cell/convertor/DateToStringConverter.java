@@ -25,8 +25,8 @@ public class DateToStringConverter implements AttributeConverter<String, Date>{
 		Date date = null;
 		try {
 			date = format.parse(value);
-		} catch (ParseException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+//			e.printStackTrace();
 		}
 		return date;
 	}

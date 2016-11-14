@@ -19,6 +19,7 @@
 	
 	<bean id="TestAction" class="com.cell.action.TestAction"></bean>
 	<bean id="RiskAction" class="com.cell.action.RiskAction"></bean>
+	<bean id="LoginAction" class="com.cell.action.LoginAction"></bean>
 	
 	<!-- 定义 Autowired 自动注入 bean -->
 	<bean
