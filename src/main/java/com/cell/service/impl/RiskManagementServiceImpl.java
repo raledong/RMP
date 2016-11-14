@@ -58,4 +58,10 @@ public class RiskManagementServiceImpl implements RiskManagementService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public void updateRisk(Risk risk) {
+		// TODO Auto-generated method stub
+		riskDao.update(risk);
+	}
 }

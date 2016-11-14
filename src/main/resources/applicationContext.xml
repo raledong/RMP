@@ -17,13 +17,13 @@
 	
 	<import resource="spring-hibernate.xml" />
 	
-	<bean id="TestAction" class="com.cell.action.TestAction">
-	</bean>
+	<bean id="TestAction" class="com.cell.action.TestAction"></bean>
+	<bean id="RiskAction" class="com.cell.action.RiskAction"></bean>
 	
 	<!-- 定义 Autowired 自动注入 bean -->
 	<bean
 		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 		
-
-	
+		
+		
 </beans>

@@ -29,4 +29,46 @@
 			</action>
       </package>
       
+      
+      
+      
+      
+      <package name="jsp" namespace="" extends="struts-default">
+         
+          
+         
+        <action name="manageRisk" class="RiskAction" method="showRisks">
+            <result name="success">/view/Risks.jsp</result>
+        </action>
+         
+        <action name="addRisk" class="RiskAction" method="addRisk">
+            <result name="success" >/view/AddRisk.jsp</result>
+        </action>
+        
+        <action name="add" class="RiskAction" method="add">
+        	<result name="success" type="redirect">addRisk</result>
+ 			<result name="error" type="redirect">addRisk</result>
+        </action>
+        
+        <!-- <action name="modRisk" class="RiskAction" method="modRisk">
+            <result name="success" >/view/ModRisk.jsp</result>
+        </action> -->
+         
+        <action name="modRisk" class="RiskAction" method="modRisk">
+            <result name="success" type="redirect">manageRisk</result>
+ 			<result name="error" type="redirect">manageRisk</result>
+        </action>
+        
+        <action name="statusTracking" class="RiskAction" method="statusTracking">
+            <result name="success" >/view/StatusTracking.jsp</result>
+        </action>
+        
+        <action name="addStatus" class="RiskAction" method="addStatus">
+        	<result name="success" type="redirect">statusTracking</result>
+ 			<result name="error" type="redirect">statusTracking</result>
+        </action>
+        
+        
+      </package>
+      
   </struts>

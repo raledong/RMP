@@ -26,4 +26,7 @@ public interface RiskManagementService {
 	//添加风险状态
 	public int createRiskStatus(RiskStatus riskStatus);
 	public int createRiskStatus(RiskStatusForm riskStatus);
+
+	//修改一个风险项的部分条目
+	public void updateRisk(Risk risk);
 }
