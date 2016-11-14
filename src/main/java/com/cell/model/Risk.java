@@ -1,18 +1,12 @@
 package com.cell.model;
 
 import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +19,7 @@ import com.cell.enumType.Level;
 public class Risk {
 
 	public Risk(){
-		
+		//default constructor
 	}
 	
 	@Id
@@ -43,7 +37,6 @@ public class Risk {
 	@Column(name="risk_probability")
 	@Convert(converter = LevelConverter.class)
 	private Level probability;
-//	private int probability;
 	
 	@Column(name="risk_impact")
 	@Convert(converter = LevelConverter.class)
