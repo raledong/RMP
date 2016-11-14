@@ -20,7 +20,6 @@ public class LoginAction extends BaseAction{
 	private String password;
 	
 	public String signin(){
-		System.out.println("用户名："＋id);
 		return SUCCESS;
 	}
 	public String getPassword() {
