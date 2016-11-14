@@ -39,25 +39,18 @@ public class RiskAction extends BaseAction{
     
      
     public String showRisks(){
-//        riskList=riskManagementService.getAllRisks(Integer.parseInt(projectId));
     	riskList=riskManagementService.getAllRisks(1);
     	request.setAttribute("riskList", riskList);
-    	System.out.println("该项目当前risk列表共："+riskList.size()+"项");
-    	System.out.println("risk列表：");
     	for(Risk risk:riskList){
     		riskInfo=risk.getInfo();
-    		System.out.println(riskInfo);
     	}
-    	System.out.println("该项目当前risk列表显示完成！！！");
         return SUCCESS;
     }
     
     
     public String addRisk(){
-    	System.out.println("这里是添加项目风险项的开始页面！！！");
     	riskList=riskManagementService.getAllRisks(1);
     	request.setAttribute("riskList", riskList);
-    	System.out.println("目前项目risk数："+riskList.size());
     	return SUCCESS;
     }
 
@@ -67,9 +60,7 @@ public class RiskAction extends BaseAction{
      * @return
      */
     public String add(){
-        System.out.println("开始新增风险项！！！");
         if(!this.validateRiskForm()){
-            System.out.println("空！！！");
             return ERROR;
         }
         Risk risk = new Risk();
@@ -81,7 +72,6 @@ public class RiskAction extends BaseAction{
         risk.setCreatedAt(new Date());
         risk.setCreatedBy(1);
         risk.setFollowedBy(1);
-        System.out.println("新增的risk："+risk.getInfo()+risk.getProbability());
         riskManagementService.createRisk(risk);
         return SUCCESS;
     }
@@ -102,7 +92,6 @@ public class RiskAction extends BaseAction{
      */
     public String modRisk(){
         if(riskId==null || riskId.equals("") || !validateRiskForm()){
-        	System.out.println("修改失败！！！");
 			return ERROR;
 		}
         
@@ -112,7 +101,6 @@ public class RiskAction extends BaseAction{
 		risk.setImpact(Level.fromCode(transform(riskImpact)));
 		risk.setTrigger(riskTrigger);
 		riskManagementService.updateRisk(risk);
-		System.out.println("风险项修改完成！！！");
 		return SUCCESS;
     }
     
@@ -155,22 +143,9 @@ public class RiskAction extends BaseAction{
      * @return
      */
     public String statusTracking(){
-//    	riskList=riskManagementService.getAllRisks(1);
-//    	request.setAttribute("riskList", riskList);
-//    	System.out.println("该项目当前risk列表共："+riskList.size()+"项");
-//    	System.out.println("risk列表：");
-//    	for(Risk risk:riskList){
-//    		riskInfo=risk.getInfo();
-//    		System.out.println(riskInfo);
-//    	}
     	
     	riskStatusList=riskManagementService.getAllRiskStatusByRiskId(1);
     	request.setAttribute("riskStatusList", riskStatusList);
-    	System.out.println("该项目当前该risk共："+riskStatusList.size()+"条状态跟踪");
-    	System.out.println("riskStatus列表：");
-    	for(RiskStatus riskStatus:riskStatusList){
-    		System.out.println(riskStatus.getId());
-    	}
     	return SUCCESS;
     }
     
@@ -179,9 +154,7 @@ public class RiskAction extends BaseAction{
      * @return
      */
     public String addStatus(){
-        System.out.println("开始新增风险状态跟踪！！！");
         if(!this.validateRiskStatusForm()){
-            System.out.println("空！！！");
             return ERROR;
         }
         RiskStatus riskStatus = new RiskStatus();
@@ -189,7 +162,6 @@ public class RiskAction extends BaseAction{
         riskStatus.setInfo(statusInfo);
         riskStatus.setCreatedAt(new Date());
         riskStatus.setCreatedBy(1);
-        System.out.println("新增的riskStatus："+riskStatus.getInfo());
         riskManagementService.createRiskStatus(riskStatus);
         return SUCCESS;
     }
