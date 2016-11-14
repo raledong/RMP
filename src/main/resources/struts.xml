@@ -19,6 +19,7 @@
           </action>
           <action name="signin" class="LoginAction" method="signin">
           	<result name="success" type="redirect">show</result>
+          	<result name="error" type="redirect">manageRisk</result>
           </action>
           <action name="show" class="ProjectAction" method="showProjects">
  			<result name="success" type="redirect">showProjects</result>
@@ -26,34 +27,10 @@
           <action name="showProjects" class="ProjectAction" method="showProjects">
           	<result name="success">/view/Projects.jsp</result>
           </action>
-          
-      </package>
-      <!-- ajax数据 -->
-      <package name="json" namespace="/JSON" extends="struts-default, json-default">
-	      <action name="getjson" class="TestAction" method="jsonGet">
-				<result type="json">
-					<param name="root">jsonResult</param>
-				</result>
-			</action>
-			<action name="getlist" class="TestAction" method="jsonListGet">
-				<result type="json">
-					<param name="root">jsonList</param>
-				</result>
-			</action>
-      </package>
-      
-      
-      
-      
-      
-      <package name="jsp" namespace="" extends="struts-default">
-      
-      
-      	
-         
-          
-         
-        <action name="manageRisk" class="RiskAction" method="showRisks">
+          <!-- <action name="risk" class="RiskActiom" method="showRisks">
+          	<result name="success" type="redirect">manageRisk</result>
+          </action> -->
+          <action name="manageRisk" class="RiskAction" method="showRisks">
             <result name="success">/view/Risks.jsp</result>
         </action>
          
@@ -83,6 +60,35 @@
         	<result name="success" type="redirect">statusTracking</result>
  			<result name="error" type="redirect">statusTracking</result>
         </action>
+          
+          
+      </package>
+      <!-- ajax数据 -->
+      <package name="json" namespace="/JSON" extends="struts-default, json-default">
+	      <action name="getjson" class="TestAction" method="jsonGet">
+				<result type="json">
+					<param name="root">jsonResult</param>
+				</result>
+			</action>
+			<action name="getlist" class="TestAction" method="jsonListGet">
+				<result type="json">
+					<param name="root">jsonList</param>
+				</result>
+			</action>
+      </package>
+      
+      
+      
+      
+      
+      <package name="jsp" namespace="" extends="struts-default">
+      
+      
+      	
+         
+          
+         
+        
         
         
       </package>

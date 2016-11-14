@@ -116,7 +116,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">项目rmp的风险项</h3>
-              <a href="/RMP/jsp/addRisk" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+              <a href="/RMP/webpage/addRisk" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <!-- /.box-header -->
             
@@ -163,7 +163,7 @@
                 							<div class="panel panel-blue" style="background:#fff;">
                 								<%-- <div class="panel-heading">risk编号：${id}</div> --%>
                 								<div class="panel-body">
-                									<s:form action="／RMP/jsp/modRisk" method="post" theme="simple">
+                									<s:form action="／RMP/webpage/modRisk" method="post" theme="simple">
                 										<div class="row form-group col-md-12">
                 											<s:label class="control-label col-md-3" value="risk编号:"/>
                 											<div class="col-md-9">

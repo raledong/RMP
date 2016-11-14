@@ -99,7 +99,7 @@
       		<small>
       			<ol class="breadcrumb pull-right">
       				<li><a href="#"><i class="fa fa-dashboard"></i> 项目</a></li>
-      				<li><a href="/RMP/jsp/manageRisk"> 项目风险</a></li>
+      				<li><a href="/RMP/webpage/manageRisk"> 项目风险</a></li>
       				<li class="active">风险跟踪</li>
       			</ol>
       		</small>
@@ -113,7 +113,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">风险<i value="riskId"></i>的状态跟踪</h3>
-              <%-- <a href="/RMP/jsp/addRiskStatus" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a> --%>
+              <%-- <a href="/RMP/webpage/addRiskStatus" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a> --%>
             </div>
             <!-- /.box-header -->
             
@@ -154,7 +154,7 @@
             
             <div class="box-body">
               
-              <s:form action="/RMP/jsp/addStatus" method="post" >
+              <s:form action="/RMP/webpage/addStatus" method="post" >
               	<div class="form-body pal">
               	  <div class="row">
               	  <div class="form-group col-md-12">

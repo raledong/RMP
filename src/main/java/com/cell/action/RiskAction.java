@@ -161,7 +161,7 @@ public class RiskAction extends BaseAction{
         riskStatus.setRiskId(1);
         riskStatus.setInfo(statusInfo);
         riskStatus.setCreatedAt(new Date());
-        riskStatus.setCreatedBy(1);
+        riskStatus.setCreatedBy(2);
         riskManagementService.createRiskStatus(riskStatus);
         return SUCCESS;
     }

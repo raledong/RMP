@@ -20,7 +20,14 @@ public class LoginAction extends BaseAction{
 	private String password;
 	
 	public String signin(){
-		return SUCCESS;
+		if(id==null){
+			return SUCCESS;
+		}
+		if(id.equals("1")){
+			return SUCCESS;
+		}else{
+			return ERROR;
+		}
 	}
 	public String getPassword() {
 		return password;

@@ -100,7 +100,7 @@
       		<small>
       			<ol class="breadcrumb pull-right">
       				<li><a href="#"><i class="fa fa-dashboard"></i> 项目</a></li>
-      				<li><a href="/RMP/jsp/manageRisk"> 项目风险</a></li>
+      				<li><a href="/RMP/webpage/manageRisk"> 项目风险</a></li>
       				<li class="active"> 新增风险</li>
       			</ol>
       		</small>
@@ -142,7 +142,7 @@
                 		<td><s:property value="trigger"/></td>
                 		<td><s:property value="createdAt"/></td>
                 		<td><s:property value="createdBy"/></td>
-                		<td><a href="/RMP/jsp/statusTracking">状态跟踪</a></td>
+                		<td><a href="/RMP/webpage/statusTracking">状态跟踪</a></td>
                 		<td><s:property value="followedBy"/></td>
                 	</tr>
                 </s:iterator>
@@ -164,7 +164,7 @@
             
             <div class="box-body">
               
-              <s:form action="/RMP/jsp/add" method="post" >
+              <s:form action="/RMP/webpage/add" method="post" >
               	<div class="form-body pal">
               	  <div class="row">
               	  	<div class="form-group col-md-12">
