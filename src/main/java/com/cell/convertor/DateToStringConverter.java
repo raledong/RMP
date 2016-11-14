@@ -1,7 +1,6 @@
 package com.cell.convertor;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,13 +19,13 @@ public class DateToStringConverter implements AttributeConverter<String, Date>{
 
 	@Override
 	public Date convertToDatabaseColumn(String value) {
-		if(value == null || value.equals(""))
+		if("".equals(value))
 			return null;
 		Date date = null;
 		try {
 			date = format.parse(value);
 		} catch (Exception e) {
-//			e.printStackTrace();
+			
 		}
 		return date;
 	}
