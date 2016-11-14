@@ -20,7 +20,7 @@ import com.cell.viewmodel.SignupForm;
 public class User {
 	
 	public User(){
-		
+		//default constructor
 	}
 	public User(SignupForm form){
 		this.name = form.getUserName();
