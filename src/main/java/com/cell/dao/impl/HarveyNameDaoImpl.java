@@ -18,7 +18,6 @@ public class HarveyNameDaoImpl extends BaseDaoImpl<HarveyName> implements Harvey
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<HarveyName> getAll() {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(HarveyName.class);
 		return criteria.list();
