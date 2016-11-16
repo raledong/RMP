@@ -30,6 +30,9 @@ public class Risk {
 	@Column(name="risk_project_id", nullable=false)
 	private int projectId;
 	
+	@Column(name="risk_type_id", nullable=false)
+	private int riskTypeId;
+	
 	@Column(name="risk_info", nullable=false)
 	private String info;
 	
@@ -111,5 +114,13 @@ public class Risk {
 
 	public void setProbability(Level probability) {
 		this.probability = probability;
+	}
+
+	public int getRiskTypeId() {
+		return riskTypeId;
+	}
+
+	public void setRiskTypeId(int riskTypeId) {
+		this.riskTypeId = riskTypeId;
 	}
 }

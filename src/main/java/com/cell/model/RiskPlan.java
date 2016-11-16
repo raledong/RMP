@@ -12,52 +12,27 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="risk_status")
-public class RiskStatus {
+@Table(name="risk_plans")
+public class RiskPlan {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="risk_status_id")
+	@Column(name="risk_plan_id")
 	private int id;
-	
-	@Column(name="risk_status_risk_id")
-	private int riskId;
-	
-	@Column(name="risk_status_info", nullable=true)
-	private String info;
-	
-	@Column(name="risk_status_isHappened")
-	private int isHappened;
-	
-	@Column(name="risk_status_created_by", nullable=true)
+
+	@Column(name="risk_plan_created_by")
 	private int createdBy;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="risk_status_created_at")
+	@Column(name="risk_created_at")
 	private Date createdAt;
-
+	
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getRiskId() {
-		return riskId;
-	}
-
-	public void setRiskId(int riskId) {
-		this.riskId = riskId;
-	}
-
-	public String getInfo() {
-		return info;
-	}
-
-	public void setInfo(String info) {
-		this.info = info;
 	}
 
 	public int getCreatedBy() {
@@ -75,16 +50,4 @@ public class RiskStatus {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-
-	public int getIsHappened() {
-		return isHappened;
-	}
-
-	public void setIsHappened(int isHappened) {
-		this.isHappened = isHappened;
-	}
-	
-	
-	
-
 }
