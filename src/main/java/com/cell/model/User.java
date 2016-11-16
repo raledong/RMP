@@ -22,14 +22,15 @@ public class User {
 	public User(){
 		//default constructor
 	}
-	public User(SignupForm form){
-		this.name = form.getUserName();
-		this.password = form.getPassword();
+	
+	public User(SignupForm signupForm){
+		this.name=signupForm.getUserName();
+		this.password=signupForm.getPassword();
 	}
 	
-	public User(String name, String password){
-		this.name = name;
-		this.password = password;
+	public User(String id, String password){
+		this.setId(Integer.parseInt(id));
+		this.setPassword(password);
 	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -49,7 +50,7 @@ public class User {
 	@Convert(converter = RoleConverter.class)
 	@Column(name="user_role")
 	private Role role;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -72,6 +73,22 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	
 	

@@ -1,5 +1,6 @@
 package com.cell.action;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,12 @@ public class ProjectAction extends BaseAction{
      
     private List<Project> projectList;//项目列表
     private String projectId;//项目编号
-    private String projectName;//
-    private String projectDescription;//
+    private String projectName;//项目名称
+    private String projectDescription;//项目描述
     private String projectCreatedAt;//提交时间
     private String projectCreatedBy;//提交者
+    
+    private String userId;
     
     private String errorMessage;
     
@@ -35,6 +38,37 @@ public class ProjectAction extends BaseAction{
     		projectName=project.getName();
     	}
         return SUCCESS;
+    }
+    
+    public String addProject(){
+    	if(!this.validateForm()){
+            return ERROR;
+        }
+        Project project = new Project();
+        project.setName(projectName);
+        project.setDescription(projectDescription);
+        project.setCreatedAt(new Date());
+        project.setCreatedBy((int) this.getSession().get("userId"));
+        projectManagementService.createProject(project);
+    	return SUCCESS;
+    }
+    
+    /**
+     * @return boolean
+     * 检验输入是否合法
+     */
+    public boolean validateForm(){
+        errorMessage = "";
+        boolean valid = true;
+        if(projectName==null || projectName.equals("")){
+            errorMessage = errorMessage.concat("未填项目名称");
+            valid = false;
+        }
+        if(projectDescription==null || projectDescription.equals("")){
+            errorMessage = errorMessage.concat("未填项目描述");
+            valid = false;
+        }
+        return valid;
     }
 
 
@@ -105,5 +139,13 @@ public class ProjectAction extends BaseAction{
 
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 }

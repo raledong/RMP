@@ -44,7 +44,7 @@
 			
 			<div class="section">
 				<div class="container">
-					<s:form class="form-signin" accept-charset="UTF-8" action="/webpage/signin" method="POST">
+					<s:form class="form-signin" accept-charset="UTF-8" action="/webpage/authenticate" method="POST">
 					
 					<h2 class="form-signin-heading">Please sign in</h2>
 					

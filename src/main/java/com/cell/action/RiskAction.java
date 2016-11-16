@@ -49,7 +49,7 @@ public class RiskAction extends BaseAction{
     
     
     public String addRisk(){
-    	riskList=riskManagementService.getAllRisks(1);
+    	riskList=riskManagementService.getAllRisks(Integer.parseInt(projectId));
     	request.setAttribute("riskList", riskList);
     	return SUCCESS;
     }
@@ -64,13 +64,13 @@ public class RiskAction extends BaseAction{
             return ERROR;
         }
         Risk risk = new Risk();
-        risk.setProjectId(1);
+        risk.setProjectId(Integer.parseInt(projectId));
         risk.setInfo(riskInfo);
         risk.setProbability(Level.fromCode(transform(riskProbability)));
         risk.setImpact(Level.fromCode(transform(riskImpact)));
         risk.setTrigger(riskTrigger);
         risk.setCreatedAt(new Date());
-        risk.setCreatedBy(1);
+        risk.setCreatedBy((int) this.getSession().get("userId"));
         risk.setFollowedBy(Integer.parseInt(riskFollowedBy));
         riskManagementService.createRisk(risk);
         return SUCCESS;

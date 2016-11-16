@@ -41,5 +41,18 @@ public class BaseAction extends ActionSupport implements SessionAware,
     		return false;
     	}
 	}
+    
+    
+    public Map<String, Object> getSession(){
+    	return this.session;
+    }
+    
+    public HttpServletRequest getServletRequest(){
+    	return this.request;
+    }
+    
+    public HttpServletResponse getServletRespone(){
+    	return this.response;
+    }
 
 }

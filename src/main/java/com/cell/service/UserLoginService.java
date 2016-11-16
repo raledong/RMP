@@ -19,7 +19,7 @@ public interface UserLoginService {
 	 * @param password
 	 * @return
 	 */
-	public User signin(String userId, String password);
+	public boolean signin(String userId, String password);
 	
 	
 	/**
@@ -28,5 +28,12 @@ public interface UserLoginService {
 	 * @return
 	 */
 	public User getPersonInfo(String userId);
+	
+	
+	/**
+	 * @param id
+	 * @return
+	 */
+	public User getUserById(String id);
 
 }

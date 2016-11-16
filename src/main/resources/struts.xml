@@ -5,8 +5,7 @@
   <struts>
   
 	<!-- 网页页面 -->
-      <package name="webpage" namespace=""
-          extends="struts-default">
+      <package name="webpage" namespace="" extends="struts-default">
           <!-- 首页 -->
           <!-- <action name="" class="TestAction" method="welcome">
           	<result name="success">/welcome.jsp</result>
@@ -14,52 +13,73 @@
           <action name="welcome" class="TestAction" method="welcome">
           	<result name="success">/welcome.jsp</result>
           </action> -->
-          <action name="" class="LoginAction" method="signin">
-          	<result name="success">/view/Login.jsp</result>
+          
+
+          
+          <!--/login  -->
+          <action name="" class="LoginAction" method="Login">
+          	<result name="login">/view/Login.jsp</result>
           </action>
-          <action name="signin" class="LoginAction" method="signin">
-          	<result name="success" type="redirect">show</result>
-          	<result name="error" type="redirect">manageRisk</result>
+          
+          <!--/authenticate -->
+          <action name="authenticate" class="LoginAction" method="checkLogin">
+          	<result name="success" type="redirect">${role}</result>
+          	<result name="error">/view/Login.jsp</result>
           </action>
-          <action name="show" class="ProjectAction" method="showProjects">
- 			<result name="success" type="redirect">showProjects</result>
- 		</action>
+          
+          
+          <!-- Manager -->
+          <action name="Manager" class="ProjectAction" method="showProjects">
+          	<result name="success" type="redirect">showProjects</result>
+          </action>
+          
+          <!-- Programmer -->
+          <action name="Programmer" class="RiskAction" method="showRisks">
+          	<result name="success" type="redirect">manageRisk</result>
+          </action>
+          
+          
+          
           <action name="showProjects" class="ProjectAction" method="showProjects">
           	<result name="success">/view/Projects.jsp</result>
           </action>
-          <!-- <action name="risk" class="RiskActiom" method="showRisks">
-          	<result name="success" type="redirect">manageRisk</result>
-          </action> -->
+          
+          <action name="addProject" class="ProjectAction" method="addProject">
+          	<result name="success" type="redirect">showProjects</result>
+          	<result name="error" type="redirect">showProjects</result>
+          </action>
+          
+          
           <action name="manageRisk" class="RiskAction" method="showRisks">
-            <result name="success">/view/Risks.jsp</result>
-        </action>
-         
-        <action name="addRisk" class="RiskAction" method="addRisk">
-            <result name="success" >/view/AddRisk.jsp</result>
-        </action>
-        
-        <action name="add" class="RiskAction" method="add">
-        	<result name="success" type="redirect">addRisk</result>
- 			<result name="error" type="redirect">addRisk</result>
-        </action>
-        
-        <!-- <action name="modRisk" class="RiskAction" method="modRisk">
-            <result name="success" >/view/ModRisk.jsp</result>
-        </action> -->
-         
-        <action name="modRisk" class="RiskAction" method="modRisk">
-            <result name="success" type="redirect">manageRisk</result>
- 			<result name="error" type="redirect">manageRisk</result>
-        </action>
-        
-        <action name="statusTracking" class="RiskAction" method="statusTracking">
-            <result name="success" >/view/StatusTracking.jsp</result>
-        </action>
-        
-        <action name="addStatus" class="RiskAction" method="addStatus">
-        	<result name="success" type="redirect">statusTracking</result>
- 			<result name="error" type="redirect">statusTracking</result>
-        </action>
+          	<result name="success">/view/Risks.jsp</result>
+          </action>
+          
+          
+          <action name="addRisk" class="RiskAction" method="addRisk">
+          	<result name="success" >/view/AddRisk.jsp</result>
+          </action>
+          
+          
+          <action name="add" class="RiskAction" method="add">
+          	<result name="success" type="redirect">addRisk</result>
+          	<result name="error" type="redirect">addRisk</result>
+          </action>
+          
+          
+          <action name="modRisk" class="RiskAction" method="modRisk">
+          	<result name="success" type="redirect">manageRisk</result>
+          	<result name="error" type="redirect">manageRisk</result>
+          </action>
+          
+          <action name="statusTracking" class="RiskAction" method="statusTracking">
+          	<result name="success" >/view/StatusTracking.jsp</result>
+          </action>
+          
+          
+          <action name="addStatus" class="RiskAction" method="addStatus">
+          	<result name="success" type="redirect">statusTracking</result>
+          	<result name="error" type="redirect">statusTracking</result>
+          </action>
           
           
       </package>
@@ -75,22 +95,6 @@
 					<param name="root">jsonList</param>
 				</result>
 			</action>
-      </package>
-      
-      
-      
-      
-      
-      <package name="jsp" namespace="" extends="struts-default">
-      
-      
-      	
-         
-          
-         
-        
-        
-        
       </package>
       
   </struts>

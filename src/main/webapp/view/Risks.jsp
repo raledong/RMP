@@ -28,12 +28,6 @@
 <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="/RMP/bootstrap/AdminLTE-2.3.7/dist/css/skins/_all-skins.min.css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 
 
@@ -102,7 +96,7 @@
       	<h1>
       		<small>
       			<ol class="breadcrumb pull-right">
-      				<li><a href="#"><i class="fa fa-dashboard"></i> 项目</a></li>
+      				<li><a href="/RMP/webpage/showProjects"><i class="fa fa-dashboard"></i> 项目</a></li>
       				<li class="active"> 项目风险</li>
       			</ol>
       		</small>
@@ -115,13 +109,12 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">项目rmp的风险项</h3>
+              <h3 class="box-title">项目<input type="hidden" id="projectId" name="projectId"/>的风险项</h3>
               <a href="/RMP/webpage/addRisk" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <!-- /.box-header -->
             
             <div class="box-body">
-            <input type="hidden" id=""/>
               <table id="risks" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -161,14 +154,11 @@
                 						
                 						<div class="modal-body">
                 							<div class="panel panel-blue" style="background:#fff;">
-                								<%-- <div class="panel-heading">risk编号：${id}</div> --%>
                 								<div class="panel-body">
                 									<s:form action="／RMP/webpage/modRisk" method="post" theme="simple">
                 										<div class="row form-group col-md-12">
                 											<s:label class="control-label col-md-3" value="risk编号:"/>
                 											<div class="col-md-9">
-                											<%-- <input id="riskId" name="riskId" type="text" class="form-control" value="${id}" placeholder="${id}"/> --%>
-                											<%-- <p class="form-control-static" id="riskId" name="riskId">${id}</p> --%>
                 											<input class="form-control" id="riskId" name="riskId" type="text" value="${id}" readonly>
                 											</div>
                 										</div>
@@ -200,24 +190,18 @@
                 											<s:label class="control-label col-md-3" value="risk创建时间:"/>
                 											<div class="col-md-9">
                 											<input class="form-control" id="riskCreatedAt" name="riskCreatedAt" type="text" value="${createdAt}" readonly>
-                											<%-- <p class="form-control-static" id="riskCreatedAt" name="riskCreatedAt">${createdAt}</p> --%>
-                											<%-- <input id="riskCreatedAt" name="riskCreatedAt" type="text" class="form-control" value="${createdAt}" placeholder=""/> --%>
                 											</div>
                 										</div>
                 										<div class="row form-group col-md-12">
                 											<s:label class="control-label col-md-3" value="risk创建者:"/>
                 											<div class="col-md-9">
                 											<input class="form-control" id="riskCreatedBy" name="riskCreatedBy" type="text" value="${createdBy}" readonly>
-                											<%-- <p class="form-control-static" id="riskCreatedBy" name="riskCreatedBy">${createdBy}</p> --%>
-                											<%-- <input id="riskCreatedBy" name="riskCreatedBy" type="text" class="form-control" value="${createdBy}" placeholder=""/> --%>
                 											</div>
                 										</div>
                 										<div class="row form-group col-md-12">
                 											<s:label class="control-label col-md-3" value="risk跟踪者:"/>
                 											<div class="col-md-9">
                 											<input class="form-control" id="riskFollowedBy" name="riskFollowedBy" type="text" value="${followedBy}" readonly>
-                											<%-- <p class="form-control-static" id="riskFollowedBy" name="riskFollowedBy">${followedBy}</p> --%>
-                											<%-- <input id="riskFollowedBy" name="riskFollowedBy" type="text" class="form-control" value="${followedBy}" placeholder=""/> --%>
                 											</div>
                 										</div>
                 										

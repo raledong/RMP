@@ -23,19 +23,13 @@ public class UserLoginServiceImpl implements UserLoginService{
 	}
 
 	@Override
-	public User signin(String userId, String password) {
-		int id;
-		try{
-			id = Integer.parseInt(userId);
-		}catch(Exception e){
-			return null;
-		}
-		
-		User user = userDao.findById(id);
-		if(user != null && user.getPassword().equals(password)){
-			return user;
-		}
-		return null;
+	public boolean signin(String userId, String password) {
+		System.out.println(userId);
+		int id = Integer.parseInt(userId);
+		User user = userDao.findById(id);		
+		if(user!=null && user.getPassword().equals(password))
+			return true;
+		return false;
 	}
 
 
@@ -48,5 +42,10 @@ public class UserLoginServiceImpl implements UserLoginService{
 	public User getPersonInfo(String userId) {
 		int id = Integer.parseInt(userId);
 		return userDao.findById(id);
+	}
+
+	@Override
+	public User getUserById(String id) {
+		return userDao.findById(Integer.parseInt(id));
 	}
 }

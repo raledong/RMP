@@ -3,7 +3,6 @@ package com.cell.enumType;
 //用户的角色
 public enum Role {
 
-	Administrator(0, "管理员"),
 	Programmer(1, "程序员"),
 	Manager(2, "项目经理");
 
@@ -16,8 +15,6 @@ public enum Role {
 	}
 	
 	public static Role fromCode(int code){
-		if(code == 0)
-			return Administrator;
 		if(code == 1)
 			return Programmer;
 		if(code == 2)

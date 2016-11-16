@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"></meta>
-<title>项目管理</title>
+<title>项目</title>
  
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -108,13 +108,14 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">项目</h3>
-              <a href="/RMP/jsp/addProject" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+              <h3 class="box-title">项目列表</h3>
+              <a href="/RMP/webpage/createRA" class="pull-right"><i class="fa fa-edit"></i>Create A RA</a>
             </div>
             <!-- /.box-header -->
             
+            
+            
             <div class="box-body">
-            <input type="hidden" id=""/>
               <table id="projects" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -134,28 +135,66 @@
                 		<td><s:property value="description"/></td>
                 		<td><s:property value="createdAt"/></td>
                 		<td><s:property value="createdBy"/></td>
-                		<td><a href="/RMP/view/manageRisk">manageRisks</a></td>
+                		<td><a href="/RMP/view/manageRisk" onclick="setValue(<s:property value="id"/>)">manageRisks</a></td>
                 	</tr>
                 </s:iterator>
                 </tbody>
               </table>
+            </div><!-- /.box-body -->    
+            
+            
+            
+            
+            
+            <div class="box-footer">
+            <button type="button" class="btn btn-default btn-sm bt-flat pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>Add New Project</button>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      		<div class="modal-dialog" role="document">
+      			<div class="modal-content">
+      				<div class="modal-header">
+      					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            			<h4 class="modal-title" id="myModalLabel">添加项目</h4>
+            		</div>
+            		
+            		<div class="modal-body">
+            			<div class="panel panel-blue" style="background:#fff;">
+            				<div class="panel-body">
+            				<s:form action="/RMP/webpage/addProject" method="post" theme="simple">
+            					<div class="form-group col-xs-12">
+            						<s:label class="control-label col-md-2" value="项目名称："/>
+            						<div class="col-md-10">
+            							<input id="projectName" name="projectName" type="text" class="form-control"/>
+            						</div>
+            					</div>
+            					<div class="form-group col-xs-12">
+            						<s:label class="control-label col-md-2" value="项目描述:"/>
+            						<div class="col-md-10">
+            							<input id="projectDescription" name="projectDescription" type="text" class="form-control"/>
+                					</div>
+                				</div>
+                				
+                				
+                				<s:submit class="btn btn-info pull-right" value="add"/>
+                			</s:form>
+                			</div>
+                		</div>
+                	</div><!-- /.modal-body -->
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-    </div>
-    <!-- /.container -->
-  </div>
-  <!-- /.content-wrapper -->
+            </div><!-- /.box-footer -->
+            
+            
+            
+            
+        </div><!-- /.box -->
+      </div><!-- /.col -->
+      </div><!-- /.row -->
+      </section><!-- /.content -->
+      </div><!-- /.container -->
+      </div><!-- /.content-wrapper -->
 
-</div>
-<!-- ./wrapper -->
+</div><!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
 <script src="/RMP/bootstrap/AdminLTE-2.3.7/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -177,7 +216,10 @@
   $(function () {
     $("#projects").DataTable();
   });
-  
+/*   function setValue(num){
+	  var p=document.getElementById('projectId');
+	  p.value=num;
+  }; */
 </script>
 </body>
 </html>
