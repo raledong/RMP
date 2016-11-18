@@ -74,3 +74,19 @@ create table risk_plan_items(
     risk_plan_item_trigger varchar(512) default ''
 )default charset = utf8;
 
+ -- 获取被识别风险的排序列表
+select riskTypes.risk_type_id, riskTypes.risk_type_info, count(risks.risk_id)
+from risk_types riskTypes, risks risks 
+where riskTypes.risk_type_id = risks.risk_type_id 
+group by riskTypes.risk_type_id
+order by count(risks.risk_id)desc
+limit 5;
+
+-- 获取问题风险的排序列表 
+select riskType.risk_type_id, riskType.risk_type_info, count(riskStatus.risk_status_id)
+from risk_types riskType, risks risks, risk_status riskStatus
+where riskType.risk_type_id = risks.risk_type_id  and risks.risk_id = riskStatus.risk_status_risk_id and riskStatus.risk_status_isHappened = 1
+	and riskStatus.risk_status_created_at <= '2016-11-21' and riskStatus.risk_status_created_at >='2016-11-1'
+group by riskType.risk_type_id
+order by count(riskStatus.risk_status_id) desc
+limit 5;

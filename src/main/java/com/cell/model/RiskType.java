@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name="risk_types")
 public class RiskType {
 	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="risk_type_id")
@@ -21,7 +22,15 @@ public class RiskType {
 	
 	@Column(name="risk_type_created_by")
 	private int createdBy;
+
+	public RiskType(){
+		
+	}
 	
+	public RiskType(int id, String info){
+		this.id = id;
+		this.info = info;
+	}
 	public int getId() {
 		return id;
 	}

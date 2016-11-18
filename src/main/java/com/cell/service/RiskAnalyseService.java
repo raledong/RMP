@@ -1,6 +1,8 @@
 package com.cell.service;
 
 import java.util.Date;
+import java.util.List;
+
 import com.cell.viewmodel.RiskAnalyseModel;
 
 //提供风险的统计功能
@@ -21,4 +23,18 @@ public interface RiskAnalyseService {
 	 * @param userId 用户id
 	 * */
 	public RiskAnalyseModel getMostTroubledRisk(Date startTime, Date endTime, int userId);
+	
+	/**
+	 * 统计所有风险，获得在某个时间段内被识别最多的风险类型，用于图表
+	 * @param startTime 开始时间
+	 * @param endTime 结束时间
+	 * */
+	public List<RiskAnalyseModel> getTop5AcknowledgedRisks(Date startTime, Date endTime);
+	
+	/**
+	 * 统计所有风险，获得在某个时间段内演变成问题最多的风险类型，用于图表
+	 * @param startTime 开始时间
+	 * @param endTime 结束时间
+	 * */
+	public List<RiskAnalyseModel> getTop5TroubledRisks(Date startTime, Date endTime);
 }

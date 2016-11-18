@@ -1,5 +1,6 @@
 package com.cell.service.impl;
 
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -98,6 +99,18 @@ public class RiskAnalyseServiceImpl implements RiskAnalyseService{
 		return null;
 	}
 	
+	@Override
+	public List<RiskAnalyseModel> getTop5AcknowledgedRisks(Date startTime, Date endTime) {
+		Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");		
+		return riskTypeDao.getListOrderByAcknowledgement(formatter.format(startTime), formatter.format(endTime), 5);
+	}
+
+	@Override
+	public List<RiskAnalyseModel> getTop5TroubledRisks(Date startTime, Date endTime) {
+		Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");		
+		return riskTypeDao.getListOrderByProblem(formatter.format(startTime), formatter.format(endTime), 5);
+	}
+	
 	public static void main(String[] args){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		RiskAnalyseService service = ctx.getBean(RiskAnalyseService.class);
@@ -118,5 +131,7 @@ public class RiskAnalyseServiceImpl implements RiskAnalyseService{
 		}
 		System.out.println(service.getMostTroubledRisk(startTime, endTime, 1).getRiskType().getId() + " " + service.getMostTroubledRisk(startTime, endTime, 1).getCount());
 	}
+
+	
 
 }
