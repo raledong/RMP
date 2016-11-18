@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cell.model.Risk;
 import com.cell.model.RiskStatus;
+import com.cell.model.RiskType;
 import com.cell.viewmodel.RiskForm;
 import com.cell.viewmodel.RiskStatusForm;
 
@@ -29,4 +30,9 @@ public interface RiskManagementService {
 
 	//修改一个风险项的部分条目
 	public void updateRisk(Risk risk);
+	
+	
+	public List<RiskType> getAllRiskTypes(int userId);
+	public RiskType getRiskTypeByInfo(String info);
+	public RiskType getRiskTypeById(int riskId);
 }

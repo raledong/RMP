@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.cell.dao.RiskDao;
 import com.cell.dao.RiskStatusDao;
+import com.cell.dao.RiskTypeDao;
 import com.cell.model.Risk;
 import com.cell.model.RiskStatus;
+import com.cell.model.RiskType;
 import com.cell.service.RiskManagementService;
 import com.cell.viewmodel.RiskForm;
 import com.cell.viewmodel.RiskStatusForm;
@@ -21,6 +23,9 @@ public class RiskManagementServiceImpl implements RiskManagementService{
 
 	@Autowired
 	RiskStatusDao riskStatusDao;
+	
+	@Autowired
+	RiskTypeDao riskTypeDao;
 	
 	@Override
 	public List<Risk> getAllRisks(int projectId) {
@@ -55,13 +60,26 @@ public class RiskManagementServiceImpl implements RiskManagementService{
 
 	@Override
 	public int createRiskStatus(RiskStatusForm riskStatus) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void updateRisk(Risk risk) {
-		// TODO Auto-generated method stub
 		riskDao.update(risk);
+	}
+
+	@Override
+	public List<RiskType> getAllRiskTypes(int userId) {
+		return riskTypeDao.getAllRiskTypes(userId);
+	}
+
+	@Override
+	public RiskType getRiskTypeByInfo(String info) {
+		return riskTypeDao.getRiskTypeByInfo(info);
+	}
+
+	@Override
+	public RiskType getRiskTypeById(int riskId) {
+		return riskTypeDao.findById(riskId);
 	}
 }
