@@ -26,6 +26,9 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 		String hql = "from User user where user.role = :role";
 		return this.findByNamedParam(hql, "role", role);
 	}
+	
+	
+	
 	public static void main(String[] args){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		UserDao userDao = ctx.getBean("userDao",UserDao.class);
