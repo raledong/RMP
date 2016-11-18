@@ -11,7 +11,7 @@ import com.cell.service.RiskTypeManagementService;
 
 @Service
 public class RiskTypeManagementServiceImpl implements RiskTypeManagementService{
-
+     
 	@Autowired
 	private RiskTypeDao riskTypeDao;
 

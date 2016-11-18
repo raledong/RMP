@@ -11,6 +11,6 @@ public interface RiskTypeManagementService {
 	public List<RiskType> getAllRiskTypes(int userId);
 	
 	public void deleteRiskType(int riskTypeId);
-	
+	    
 	public void updateRiskType(RiskType riskType);
 }
