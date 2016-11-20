@@ -130,11 +130,17 @@
           
           <div class="tab-content no-padding">
             <div class="chart tab-pane" id="bar-chart" style="position:relative;">
-              <canvas id="barChart" style="height: 230px; width: 652px;" height="287" width="815">
+              <canvas id="barChart" style="height: 230px; width: 652px;" height="287" width="815"></canvas>
+              <B><p align="center">识别最多的风险</p></B>
+              <canvas id="barChart2" style="height: 230px; width: 652px;" height="287" width="815"></canvas>
+              <B><p align="center">引发问题最多的风险</p></B>
             </div>
             
             <div class="chart tab-pane active" id="pie-chart" style="position:relative;">
-              <canvas id="pieChart" style="height: 326px; width: 652px;" height="407" width="815">
+              <canvas id="pieChart" style="height: 326px; width: 652px;" height="407" width="815"></canvas>
+              <B><p align="center">识别最多的风险</p></B>
+              <canvas id="pieChart2" style="height: 326px; width: 652px;" height="407" width="815"></canvas>
+              <B><p align="center">引发问题最多的风险</p></B>
             </div>
           </div>
           <%--<div class="box">
@@ -269,45 +275,20 @@ $(function () {
 function initPie(){
 	  var acknowledged = "${requestScope.acknowledged}";
 	  var troubled = "${requestScope.troubled}";
+	  var colorset = ["#f56954", "00a65a", "#f39c12", "#00c0ef", "#3c8dbc", "d2d6de"];
 	  var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
 	  var pieChart = new Chart(pieChartCanvas);
-	  var PieData = [
-	  {
-      value: 700,
-      color: "#f56954",
-      highlight: "#f56954",
-      label: "Chrome"
-    },
-    {
-      value: 500,
-      color: "#00a65a",
-      highlight: "#00a65a",
-      label: "IE"
-    },
-    {
-      value: 400,
-      color: "#f39c12",
-      highlight: "#f39c12",
-      label: "FireFox"
-    },
-    {
-      value: 600,
-      color: "#00c0ef",
-      highlight: "#00c0ef",
-      label: "Safari"
-    },
-    {
-      value: 300,
-      color: "#3c8dbc",
-      highlight: "#3c8dbc",
-      label: "Opera"
-    },
-    {
-      value: 100,
-      color: "#d2d6de",
-      highlight: "#d2d6de",
-      label: "Navigator"
-    }
+	  var PieData = [];
+	  for(var e in acknowledged) {
+		  var tmp = {
+		  value: e.count,
+		  color: colorset[i],
+		  highlight: colorset[i],
+		  label: e.riskType
+		  };
+		  PieData.push(tmp);
+	  }
+	  
 	  ];
 	  var pieOptions = {
 		//Boolean - Whether we should show a stroke on each segment
@@ -336,6 +317,46 @@ function initPie(){
 	  //Create pie or douhnut chart
 	  // You can switch between pie and douhnut using the method below.
 	  pieChart.Doughnut(PieData, pieOptions); 
+	  
+	  var pieChartCanvas2 = $("#pieChart2").get(0).getContext("2d");
+	  var pieChart2 = new Chart(pieChartCanvas2);
+	  var PieData2 = [];
+	  for(var e in acknowledged) {
+		  var tmp = {
+		  value: e.count,
+		  color: colorset[i],
+		  highlight: colorset[i],
+		  label: e.riskType
+		  };
+		  PieData2.push(tmp);
+	  }
+	  var pieOptions2 = {
+		//Boolean - Whether we should show a stroke on each segment
+		segmentShowStroke: true,
+		//String - The colour of each segment stroke
+		segmentStrokeColor: "#fff",
+		//Number - The width of each segment stroke
+		segmentStrokeWidth: 2,
+		//Number - The percentage of the chart that we cut out of the middle
+		percentageInnerCutout: 50, // This is 0 for Pie charts
+		//Number - Amount of animation steps
+		animationSteps: 100,
+		//String - Animation easing effect
+		animationEasing: "easeOutBounce",
+		//Boolean - Whether we animate the rotation of the Doughnut
+		animateRotate: true,
+		//Boolean - Whether we animate scaling the Doughnut from the centre
+		animateScale: false,
+		//Boolean - whether to make the chart responsive to window resizing
+		responsive: true,
+		// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+		maintainAspectRatio: true,
+		//String - A legend template
+		legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+	  };
+	  //Create pie or douhnut chart
+	  // You can switch between pie and douhnut using the method below.
+	  pieChart2.Doughnut(PieData2, pieOptions2); 
 	  };
 
 function initBar(){
@@ -343,34 +364,30 @@ function initBar(){
 	  var troubled = "${requestScope.troubled}";
 	  var barChartCanvas = $("#barChart").get(0).getContext("2d");
 	  var barChart = new Chart(barChartCanvas);
+	  var acLabel=[];
+	  var acData = [];
+	  for(var e in acknowledged) {
+		  acLabel.push(e.riskType);
+		  acData.push(e.count);
+	  }
 	  var barChartData = {
-		labels: ["January", "February", "March", "April", "May", "June", "July"],
+		labels: acLabel,
 		datasets: [
 		  {
-			label: "Electronics",
-			fillColor: "rgba(210, 214, 222, 1)",
-			strokeColor: "rgba(210, 214, 222, 1)",
-			pointColor: "rgba(210, 214, 222, 1)",
-			pointStrokeColor: "#c1c7d1",
-			pointHighlightFill: "#fff",
-			pointHighlightStroke: "rgba(220,220,220,1)",
-			data: [65, 59, 80, 81, 56, 55, 40]
-		  },
-		  {
-			label: "Digital Goods",
+			label: "识别次数",
 			fillColor: "rgba(60,141,188,0.9)",
 			strokeColor: "rgba(60,141,188,0.8)",
 			pointColor: "#3b8bba",
 			pointStrokeColor: "rgba(60,141,188,1)",
 			pointHighlightFill: "#fff",
 			pointHighlightStroke: "rgba(60,141,188,1)",
-			data: [28, 48, 40, 19, 86, 27, 90]
+			data: acData
 		  }
 		]
 	  };
-	  barChartData.datasets[1].fillColor = "#00a65a";
-	  barChartData.datasets[1].strokeColor = "#00a65a";
-	  barChartData.datasets[1].pointColor = "#00a65a";
+	  barChartData.datasets[0].fillColor = "#00a65a";
+	  barChartData.datasets[0].strokeColor = "#00a65a";
+	  barChartData.datasets[0].pointColor = "#00a65a";
 	  var barChartOptions = {
 		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
 		scaleBeginAtZero: true,
@@ -401,6 +418,64 @@ function initBar(){
 
 	  barChartOptions.datasetFill = false;
 	  barChart.Bar(barChartData, barChartOptions);
+	  
+	  
+	  var barChartCanvas2 = $("#barChart2").get(0).getContext("2d");
+	  var barChart2 = new Chart(barChartCanvas2);
+	  var acLabel2 = [];
+	  var acData2 = [];
+	  for(var e in troubled) {
+		  acLabel2.push(e.riskType);
+		  acData2.push(e.count);
+	  }
+	  var barChartData2 = {
+		labels: acLabel2,
+		datasets: [
+		  {
+			label: "引发问题次数",
+			fillColor: "rgba(60,141,188,0.9)",
+			strokeColor: "rgba(60,141,188,0.8)",
+			pointColor: "#3b8bba",
+			pointStrokeColor: "rgba(60,141,188,1)",
+			pointHighlightFill: "#fff",
+			pointHighlightStroke: "rgba(60,141,188,1)",
+			data: acData2
+		  }
+		]
+	  };
+	  barChartData2.datasets[0].fillColor = "#00a65a";
+	  barChartData2.datasets[0].strokeColor = "#00a65a";
+	  barChartData2.datasets[0].pointColor = "#00a65a";
+	  var barChartOptions2 = {
+		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		scaleBeginAtZero: true,
+		//Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines: true,
+		//String - Colour of the grid lines
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		//Number - Width of the grid lines
+		scaleGridLineWidth: 1,
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+		//Boolean - If there is a stroke on each bar
+		barShowStroke: true,
+		//Number - Pixel width of the bar stroke
+		barStrokeWidth: 2,
+		//Number - Spacing between each of the X value sets
+		barValueSpacing: 5,
+		//Number - Spacing between data sets within X values
+		barDatasetSpacing: 1,
+		//String - A legend template
+		legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+		//Boolean - whether to make the chart responsive
+		responsive: true,
+		maintainAspectRatio: true
+	  };
+  
+	  barChartOptions2.datasetFill = false;
+	  barChart2.Bar(barChartData2, barChartOptions2);
 	  };
 </script>
 </body>

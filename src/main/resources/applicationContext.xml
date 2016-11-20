@@ -21,6 +21,7 @@
 	<bean id="RiskAction" class="com.cell.action.RiskAction"></bean>
 	<bean id="LoginAction" class="com.cell.action.LoginAction"></bean>
 	<bean id="ProjectAction" class="com.cell.action.ProjectAction"></bean>
+	<bean id="ChartAction" class="com.cell.action.ChartAction"></bean>
 	
 	<!-- 定义 Autowired 自动注入 bean -->
 	<bean

@@ -81,6 +81,11 @@
           	<result name="error" type="redirect">statusTracking</result>
           </action>
           
+          <action name="charts" class="ChartAction" method="showChart">
+            <result name="success">/view/Chart.jsp</result>
+          </action>
+          
+          
           
       </package>
       <!-- ajax数据 -->
