@@ -115,8 +115,8 @@
                风险统计
             </li>
             <li class="pull-left">
-              <form action="#" method="get" name="dateForm">
-                <input type="text" style="width:200px;" class="form-control" name="dateRange" id="dateRange">
+              <form action="ChartAction?method=refreshChart" method="get" name="dateForm" id="dateForm">
+                <input type="text" style="width:200px;" class="form-control" name="dateRange" id="dateRange" onChange="changeDate();">
               </form>
             </li>
           </ul>
@@ -272,7 +272,11 @@ $(function () {
      });
 });
 
-function initPie(){
+  function changeDate() {
+	  $('#dateForm').submit();
+  }
+  
+  function initPie(){
 	  var acknowledged = "${requestScope.acknowledged}";
 	  var troubled = "${requestScope.troubled}";
 	  var colorset = ["#f56954", "00a65a", "#f39c12", "#00c0ef", "#3c8dbc", "d2d6de"];
@@ -289,7 +293,6 @@ function initPie(){
 		  PieData.push(tmp);
 	  }
 	  
-	  ];
 	  var pieOptions = {
 		//Boolean - Whether we should show a stroke on each segment
 		segmentShowStroke: true,
@@ -311,8 +314,6 @@ function initPie(){
 		responsive: true,
 		// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
 		maintainAspectRatio: true,
-		//String - A legend template
-		legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
 	  };
 	  //Create pie or douhnut chart
 	  // You can switch between pie and douhnut using the method below.
@@ -351,15 +352,13 @@ function initPie(){
 		responsive: true,
 		// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
 		maintainAspectRatio: true,
-		//String - A legend template
-		legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
 	  };
 	  //Create pie or douhnut chart
 	  // You can switch between pie and douhnut using the method below.
 	  pieChart2.Doughnut(PieData2, pieOptions2); 
 	  };
 
-function initBar(){
+  function initBar(){
 	  var acknowledged = "${requestScope.acknowledged}";
 	  var troubled = "${requestScope.troubled}";
 	  var barChartCanvas = $("#barChart").get(0).getContext("2d");
@@ -409,8 +408,6 @@ function initBar(){
 		barValueSpacing: 5,
 		//Number - Spacing between data sets within X values
 		barDatasetSpacing: 1,
-		//String - A legend template
-		legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
 		//Boolean - whether to make the chart responsive
 		responsive: true,
 		maintainAspectRatio: true
@@ -467,8 +464,6 @@ function initBar(){
 		barValueSpacing: 5,
 		//Number - Spacing between data sets within X values
 		barDatasetSpacing: 1,
-		//String - A legend template
-		legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
 		//Boolean - whether to make the chart responsive
 		responsive: true,
 		maintainAspectRatio: true
