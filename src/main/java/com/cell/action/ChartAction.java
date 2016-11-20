@@ -27,10 +27,10 @@ public class ChartAction extends BaseAction {
 
 	public String showChart() {
 		Date endDate = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar date = Calendar.getInstance();
 		date.setTime(endDate);
-		date.set(Calendar.DATE, date.get(Calendar.DATE) - 1);
+		date.set(Calendar.DATE, date.get(Calendar.DATE) - 7);
 		Date startDate = new Date();
 		try {
 			startDate = sdf.parse(sdf.format(date.getTime()));
@@ -38,15 +38,18 @@ public class ChartAction extends BaseAction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(startDate+" - "+endDate);
 		acknowledged = riskAnalyseService.getTop5AcknowledgedRisks(startDate, endDate);
 		troubled = riskAnalyseService.getTop5TroubledRisks(startDate, endDate);
+		if(acknowledged.isEmpty())System.out.println("空");
+		else System.out.println(acknowledged.get(0).getRiskType().getInfo());
 		request.setAttribute("acknowledged", acknowledged);
 		request.setAttribute("troubled", troubled);
 		return SUCCESS;
 	}
 	
 	public String refreshChart() {
-		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/YYYY");
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
 		String start, end;
 		Date startDate = new Date(), endDate = new Date();
 		start = dateRange.split("-")[0].trim();
