@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+ux<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
  
 <%@ taglib prefix="s" uri="/struts-tags" %>
@@ -197,7 +197,7 @@
   function changeDate() {
 	  $('#dateForm').submit();
   }
-  /*
+  
   function initPie(){
 	  var acknowledged = "${requestScope.acknowledged}";
 	  var acknowledged = "${requestScope.acknowledged}";
@@ -205,16 +205,39 @@
 	  var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
 	  var pieChart = new Chart(pieChartCanvas);
 	  
-	  var PieData = [];
-	  for(var i = 0; i < 6; i++) {
-		  var tmp = {
-		  value: i+1,
-		  color: colorset[i],
-		  highlight: colorset[i],
-		  label: "Label"+i
-		  };
-		  PieData.push(tmp);
-	  }
+	  var PieData = [
+	            	  
+	                  {
+	                    value: 5,
+	                    color: "#00a65a",
+	                    highlight: "#00a65a",
+	                    label: "miscalculation"
+	                  },
+	                  {
+		                    value: 3,
+		                    color: "#f56954",
+		                    highlight: "#f56954",
+		                    label: "System crush"
+		                  },
+	                  {
+	                    value: 3,
+	                    color: "#f39c12",
+	                    highlight: "#f39c12",
+	                    label: "time-out"
+	                  },
+	                  {
+	                    value: 2,
+	                    color: "#00c0ef",
+	                    highlight: "#00c0ef",
+	                    label: "network fault"
+	                  },
+	                  {
+	                    value: 1,
+	                    color: "#3c8dbc",
+	                    highlight: "#3c8dbc",
+	                    label: "lose storage"
+	                  }
+	            	  ];
 	  var pieOptions = {
 		//Boolean - Whether we should show a stroke on each segment
 		segmentShowStroke: true,
@@ -246,40 +269,34 @@
 	  var pieChart2 = new Chart(pieChartCanvas2);
 	  var PieData2 = [
 	  {
-        value: 700,
+        value: 10,
         color: "#f56954",
         highlight: "#f56954",
-        label: "Chrome"
+        label: "System crush"
       },
       {
-        value: 500,
+        value: 8,
         color: "#00a65a",
         highlight: "#00a65a",
-        label: "IE"
+        label: "miscalculation"
       },
       {
-        value: 400,
+        value: 4,
         color: "#f39c12",
         highlight: "#f39c12",
-        label: "FireFox"
+        label: "time-out"
       },
       {
-        value: 600,
+        value: 3,
         color: "#00c0ef",
         highlight: "#00c0ef",
-        label: "Safari"
+        label: "network fault"
       },
       {
-        value: 300,
+        value: 1,
         color: "#3c8dbc",
         highlight: "#3c8dbc",
-        label: "Opera"
-      },
-      {
-        value: 100,
-        color: "#d2d6de",
-        highlight: "#d2d6de",
-        label: "Navigator"
+        label: "lose storage"
       }
 	  ];
 	  var pieOptions2 = {
@@ -323,33 +340,23 @@
 		  tmpData2.push((i+1)*2);
 	  }
 	  var barChartData = {
-		labels: tmpLabel,
+		labels: ["miscalculation","System crush","time-out","network fault","lose storage"],
 		datasets: [
 		  {
-			label: "Electronics",
-			fillColor: "rgba(210, 214, 222, 1)",
-			strokeColor: "rgba(210, 214, 222, 1)",
-			pointColor: "rgba(210, 214, 222, 1)",
-			pointStrokeColor: "#c1c7d1",
-			pointHighlightFill: "#fff",
-			pointHighlightStroke: "rgba(220,220,220,1)",
-			data: tmpData
-		  },
-		  {
-			label: "Digital Goods",
+			label: "识别次数",
 			fillColor: "rgba(60,141,188,0.9)",
 			strokeColor: "rgba(60,141,188,0.8)",
 			pointColor: "#3b8bba",
 			pointStrokeColor: "rgba(60,141,188,1)",
 			pointHighlightFill: "#fff",
 			pointHighlightStroke: "rgba(60,141,188,1)",
-			data: tmpData2
+			data: [5,3,3,2,1]
 		  }
 		]
 	  };
-	  barChartData.datasets[1].fillColor = "#00a65a";
-	  barChartData.datasets[1].strokeColor = "#00a65a";
-	  barChartData.datasets[1].pointColor = "#00a65a";
+	  barChartData.datasets[0].fillColor = "#00a65a";
+	  barChartData.datasets[0].strokeColor = "#00a65a";
+	  barChartData.datasets[0].pointColor = "#00a65a";
 	  var barChartOptions = {
 		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
 		scaleBeginAtZero: true,
@@ -383,33 +390,24 @@
 	  var barChartCanvas2 = $("#barChart2").get(0).getContext("2d");
 	  var barChart2 = new Chart(barChartCanvas2);
 	  var barChartData2 = {
-		labels: ["January", "February", "March", "April", "May", "June", "July"],
+		labels: ["System crush", "miscalculation", "time-out", "network fault", "lose storage"],
 		datasets: [
+		  
 		  {
-			label: "Electronics",
-			fillColor: "rgba(210, 214, 222, 1)",
-			strokeColor: "rgba(210, 214, 222, 1)",
-			pointColor: "rgba(210, 214, 222, 1)",
-			pointStrokeColor: "#c1c7d1",
-			pointHighlightFill: "#fff",
-			pointHighlightStroke: "rgba(220,220,220,1)",
-			data: [65, 59, 80, 81, 56, 55, 40]
-		  },
-		  {
-			label: "Digital Goods",
+			label: "发生问题次数",
 			fillColor: "rgba(60,141,188,0.9)",
 			strokeColor: "rgba(60,141,188,0.8)",
 			pointColor: "#3b8bba",
 			pointStrokeColor: "rgba(60,141,188,1)",
 			pointHighlightFill: "#fff",
 			pointHighlightStroke: "rgba(60,141,188,1)",
-			data: [28, 48, 40, 19, 86, 27, 90]
+			data: [10,8,4,3,1]
 		  }
 		]
 	  };
-	  barChartData2.datasets[1].fillColor = "#00a65a";
-	  barChartData2.datasets[1].strokeColor = "#00a65a";
-	  barChartData2.datasets[1].pointColor = "#00a65a";
+	  barChartData2.datasets[0].fillColor = "#00a65a";
+	  barChartData2.datasets[0].strokeColor = "#00a65a";
+	  barChartData2.datasets[0].pointColor = "#00a65a";
 	  var barChartOptions2 = {
 		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
 		scaleBeginAtZero: true,
@@ -439,9 +437,9 @@
   
 	  barChartOptions2.datasetFill = false;
 	  barChart2.Bar(barChartData2, barChartOptions2);
-	  };*/
+	  };
 	  
-	  
+	  /*
   function initPie(){
 	  var acknowledged = "${requestScope.acknowledged}";
 	  var troubled = "${requestScope.troubled}";
@@ -637,7 +635,7 @@
   
 	  barChartOptions2.datasetFill = false;
 	  barChart2.Bar(barChartData2, barChartOptions2);
-	  };
+	  };*/
 </script>
 </body>
 </html>

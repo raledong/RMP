@@ -82,7 +82,7 @@
           </action>
           
           <action name="charts" class="ChartAction" method="showChart">
-            <result name="success">/view/Chart.jsp</result>
+            <result name="success">/view/Test.jsp</result>
           </action>
           
           <action name="chartTest" class="ChartAction" method="showChart">
