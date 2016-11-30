@@ -37,7 +37,6 @@ public class ChartAction extends BaseAction {
     	top5AcknowledgedRisks=riskAnalyseService.getTop5AcknowledgedRisks(startTime, endTime);
     	top5TroubledRisks=riskAnalyseService.getTop5TroubledRisks(startTime, endTime);
     	
-    	System.out.println("top5AcknowledgedRisks"+top5AcknowledgedRisks.get(0).getRiskType().getInfo());
     	
     	if(startTime==null||startTime.equals("")||endTime==null||endTime.equals("")){
     		System.out.println("date错误！！！");
