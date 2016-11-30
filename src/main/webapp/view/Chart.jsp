@@ -202,7 +202,11 @@ $(function () {
      
      
     var bar_data = {
-      data: [["系统崩溃", 2], ["需求变更", 1], ["计划不合理", 0], ["设备故障", 0], ["人员变动", 0]],
+      data: [["${top5AcknowledgedRisks.get(0).getRiskType().getInfo()}", "${top5AcknowledgedRisks.get(0).getCount()}"], 
+             ["${top5AcknowledgedRisks.get(1).getRiskType().getInfo()}","${top5AcknowledgedRisks.get(1).getCount()}"], 
+             ["${top5AcknowledgedRisks.get(2).getRiskType().getInfo()}", "${top5AcknowledgedRisks.get(2).getCount()}"], 
+             ["${top5AcknowledgedRisks.get(3).getRiskType().getInfo()}", "${top5AcknowledgedRisks.get(3).getCount()}"], 
+             ["${top5AcknowledgedRisks.get(4).getRiskType().getInfo()}", "${top5AcknowledgedRisks.get(4).getCount()}"]],
       color: "#3c8dbc"
     };
     $.plot("#bar-chart", [bar_data], {
@@ -225,7 +229,11 @@ $(function () {
     });
     
     var bar_data2 = {
-    	      data: [["系统崩溃", 1], ["需求变更", 2], ["计划不合理", 0], ["设备故障", 0], ["人员变动", 0]],
+    		data: [["${top5TroubledRisks.get(0).getRiskType().getInfo()}", "${top5TroubledRisks.get(0).getCount()}"], 
+    	             ["${top5TroubledRisks.get(1).getRiskType().getInfo()}","${top5TroubledRisks.get(1).getCount()}"], 
+    	             ["${top5TroubledRisks.get(2).getRiskType().getInfo()}", "${top5TroubledRisks.get(2).getCount()}"], 
+    	             ["${top5TroubledRisks.get(3).getRiskType().getInfo()}", "${top5TroubledRisks.get(3).getCount()}"], 
+    	             ["${top5TroubledRisks.get(4).getRiskType().getInfo()}", "${top5TroubledRisks.get(4).getCount()}"]],
     	      color: "#3c8dbc"
     	    };
     	    $.plot("#bar-chart2", [bar_data2], {
