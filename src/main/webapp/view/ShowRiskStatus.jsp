@@ -5,10 +5,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8"></meta>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"></meta>
-<title>风险管理－新增风险</title>
+<title>风险状态</title>
  
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -24,7 +23,6 @@
 <link rel="stylesheet" href="/RMP/bootstrap/AdminLTE-2.3.7/dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="/RMP/bootstrap/AdminLTE-2.3.7/dist/css/skins/_all-skins.min.css">
-
 
 </head>
 
@@ -88,7 +86,7 @@
       			<ol class="breadcrumb pull-right">
       				<li><a href="/RMP/webpage/showProjects"><i class="fa fa-dashboard"></i> Projects&RA</a></li>
       				<li><a href="/RMP/webpage/manageRisk"> 项目风险</a></li>
-      				<li class="active"> 新增项目风险</li>
+      				<li class="active"> 风险状态</li>
       			</ol>
       		</small>
       	</h1>
@@ -97,115 +95,35 @@
       <!-- Main content -->
       <section class="content">
       <div class="row">
-        <div class="col-xs-8">
+      	<div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">项目${projectId}的风险项</h3>
-            </div>
-            <!-- /.box-header -->
+              <h3 class="box-title">风险${riskId}的状态</h3>
+            </div><!-- /.box-header -->
             
             <div class="box-body">
-              <table id="risks" class="table table-bordered table-striped">
+              <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>编号</th>
-                  <th>风险内容</th>
-                  <th>可能性</th>
-                  <th>影响程度</th>
-                  <th>触发器／阈值</th>
-                  <th>提交时间</th>
-                  <th>提交者</th>
-                  <th>状态详情</th>
-                  <th>跟踪者</th>
+                  <th>描述</th>
+                  <th>状态</th>
+                  <th>创建时间</th>
+                  <th>创建者</th>
                 </tr>
                 </thead>
                 <tbody>
-                <s:iterator value="riskList" id="risk">
+                <s:iterator value="riskStatusList" id="riskStatus">
                 	<tr>
                 		<td><s:property value="id"/></td>
                 		<td><s:property value="info"/></td>
-                		<td><s:property value="probability"/></td>
-                		<td><s:property value="impact"/></td>
-                		<td><s:property value="trigger"/></td>
+                		<td><s:property value="isHappened"/></td>
                 		<td><s:property value="createdAt"/></td>
                 		<td><s:property value="createdBy"/></td>
-                		<td><a href="/RMP/view/showRiskStatus?riskId=${id}">状态详情</a></td>
-                		<td><s:property value="followedBy"/></td>
                 	</tr>
                 </s:iterator>
                 </tbody>
               </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-        
-        <div class="col-xs-4">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">新增风险</h3>
-            </div>
-            <!-- /.box-header -->
-            
-            <div class="box-body">
-              
-              <s:form action="/RMP/webpage/add" method="post" >
-              	<div class="form-body pal">
-              	  <div class="row">
-              	  	<div class="form-group col-md-12">
-              	  		<label>风险类型</label>
-              	  		<select id="riskTypeId" name="riskTypeId" class="form-control" >
-              	  		<s:iterator value="riskTypeList" id="riskType">
-              	  		<option value=${riskType.id }>${riskType.info }</option>
-              	  		</s:iterator>
-              	  		</select>
-              	  	</div>
-              	  	
-              	  	<div class="form-group col-md-12">
-              	  		<label>风险内容</label>
-              	  	  	<input type="text" id="riskInfo" name="riskInfo" class="form-control"/>
-              	  	</div>
-              	  	
-              	  	<div class="form-group col-md-12">
-              	  		<label>可能性</label>
-              	  		<select id="riskProbability" name="riskProbability" class="form-control" >
-              	  		<option value="low">low</option>
-              	  		<option value="medium">medium</option>
-              	  		<option value="high">high</option>
-              	  		</select>
-              	  	</div>
-              	  	
-              	  	<div class="form-group col-md-12">
-              	  		<label>影响程度</label>
-              	  		<select id="riskImpact" name="riskImpact" class="form-control" >
-              	  		<option value="low">low</option>
-              	  		<option value="medium">medium</option>
-              	  		<option value="high">high</option>
-              	  		</select>
-              	  	</div>
-              	  	
-              	  	<div class="form-group col-md-12">
-              	  		<label>触发器／阈值</label>
-              	  	  	<input type="text" id="riskTrigger" name="riskTrigger" class="form-control"/>
-              	  	</div>
-              	  	
-              	  	<div class="form-group col-md-12">
-              	  		<label>跟踪者</label>
-              	  	  	<input type="text" id="riskFollowedBy" name="riskFollowedBy" class="form-control"/>
-              	  	</div>
-              	  	
-              	  </div>
-              	 </div>
-              	 
-              	 
-              	 <div class="form-actions text-right pal">
-              	 	<s:submit class="btn btn-primary" value="add" theme="simple"/>
-              	 </div>
-              	 
-              </s:form>
-              
             </div>
             <!-- /.box-body -->
           </div>
@@ -236,9 +154,9 @@
 <!-- FastClick -->
 <script src="/RMP/bootstrap/AdminLTE-2.3.7/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="/RMP/bootstrap/AdminLTE-2.3.7/dist/js/app.min.js"></script>
+<script src="/RMP/bootstrap/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/RMP/bootstrap/AdminLTE-2.3.7/dist/js/demo.js"></script>
+<script src="/RMP/bootstrap/dist/js/demo.js"></script>
 <!-- page script -->
 <script>
   $(function () {

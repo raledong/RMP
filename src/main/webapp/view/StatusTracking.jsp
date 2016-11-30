@@ -24,12 +24,6 @@
 <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="/RMP/bootstrap/AdminLTE-2.3.7/dist/css/skins/_all-skins.min.css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 
 
@@ -41,49 +35,41 @@
 <div class="wrapper">
 
   <header class="main-header">
-    <nav class="navbar navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="#" class="navbar-brand"><b>RiskManage</b></a>
-        </div>
-
-        <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <!-- User Account Menu -->
-            <li class="dropdown user user-menu">
-              <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <!-- The user image in the navbar-->
-                <img src="" class="user-image" alt="User Image">
-                <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">Alexander Pierce</span>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- The user image in the menu -->
-                <li class="user-header">
-                  <img src="" class="img-circle" alt="User Image">
-
-                  <p>
-                    Alexander Pierce - Web Developer
-                    <small>Member since Nov. 2012</small>
-                  </p>
-                </li>
-                
-                <!-- Menu Footer-->
-                <li class="user-footer">
-                  <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <!-- /.navbar-custom-menu -->
-      </div>
-      <!-- /.container-fluid -->
-    </nav>
+  	<nav class="navbar navbar-static-top">
+  		<div class="container">
+  			<div class="navbar-header">
+  				<a href="#" class="navbar-brand"><b>RiskManageProject</b></a>
+  			</div>
+  			
+  			<!-- Navbar Right Menu -->
+  			<div class="navbar-custom-menu">
+  				<ul class="nav navbar-nav">
+  				<!-- User Account Menu -->
+  					<li class="dropdown user user-menu">
+  						<!-- Menu Toggle Button -->
+  						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  							<span class="hidden-xs">Manager</span>
+  						</a>
+  						<ul class="dropdown-menu">
+  							<!-- The user image in the menu -->
+  							<li class="user-header">
+  								<img alt="User Image" src="/RMP/bootstrap/AdminLTE-2.3.7/dist/img/user2-160x160.jpg">
+  								<p>Manager - Web Developer
+  									<small>Member since Nov. 2012</small>
+  								</p>
+  							</li>
+  							<!-- Menu Footer-->
+  							<li class="user-footer">
+  								<div class="pull-right">
+  									<a href="/RMP/view/Login.jsp" class="btn btn-default btn-flat">Sign out</a>
+  								</div>
+  							</li>
+  						</ul>
+  					</li>
+  				</ul>
+  			</div><!-- /.navbar-custom-menu -->
+  		</div><!-- /.container -->
+  	</nav>
   </header>
   
   
@@ -98,9 +84,9 @@
       	<h1>
       		<small>
       			<ol class="breadcrumb pull-right">
-      				<li><a href="#"><i class="fa fa-dashboard"></i> 项目</a></li>
-      				<li><a href="/RMP/webpage/manageRisk"> 项目风险</a></li>
-      				<li class="active">风险跟踪</li>
+      				<li><a href="/RMP/webpage/projects"><i class="fa fa-dashboard"></i> 项目</a></li>
+      				<li><a href="/RMP/webpage/showRisks"> 项目风险</a></li>
+      				<li class="active">风险状态跟踪</li>
       			</ol>
       		</small>
       	</h1>
@@ -112,8 +98,7 @@
         <div class="col-xs-6">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">风险<i value="riskId"></i>的状态跟踪</h3>
-              <%-- <a href="/RMP/webpage/addRiskStatus" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a> --%>
+              <h3 class="box-title">风险${riskId}的状态跟踪</h3>
             </div>
             <!-- /.box-header -->
             
@@ -122,7 +107,8 @@
                 <thead>
                 <tr>
                   <th>编号</th>
-                  <th>内容</th>
+                  <th>描述</th>
+                  <th>状态</th>
                   <th>创建时间</th>
                   <th>创建者</th>
                 </tr>
@@ -132,6 +118,7 @@
                 	<tr>
                 		<td><s:property value="id"/></td>
                 		<td><s:property value="info"/></td>
+                		<td><s:property value="isHappened"/></td>
                 		<td><s:property value="createdAt"/></td>
                 		<td><s:property value="createdBy"/></td>
                 	</tr>
@@ -158,9 +145,16 @@
               	<div class="form-body pal">
               	  <div class="row">
               	  <div class="form-group col-md-12">
-              	  <label>状态描述</label>
+              	  <label>描述</label>
               	  <input type="text" id="statusInfo" name="statusInfo" class="form-control"/>
               	  </div>
+              	  </div>
+              	  <div class="form-group col-md-12">
+              	  <label>状态</label>
+              	  <select id="isHappened" name="isHappened" class="form-control" >
+              	  	<option value="0">风险状态（未发生）</option>
+              	  	<option value="1">问题状态（已发生）</option>
+              	  </select>
               	  </div>
               	 </div>
               	 

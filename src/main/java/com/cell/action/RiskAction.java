@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.cell.enumType.Level;
 import com.cell.model.Risk;
 import com.cell.model.RiskStatus;
+import com.cell.model.RiskType;
 import com.cell.service.RiskManagementService;
 
 @Repository
@@ -21,8 +22,13 @@ public class RiskAction extends BaseAction{
      
     private List<Risk> riskList;//风险列表
     private List<RiskStatus> riskStatusList;//风险状态列表
+    private List<RiskType> riskTypeList;//风险类型列表
+    
+    
     private String riskId;//风险编号
     private String projectId;//项目编号
+    private String riskTypeId;//风险类型
+    private String riskTypeInfo;
     private String riskInfo;//风险内容
     private String riskProbability;//可能性
     private String riskImpact;//影响程度
@@ -32,39 +38,31 @@ public class RiskAction extends BaseAction{
     private String riskFollowedBy;//跟踪者
     private String statusId;//状态编号
     private String statusInfo;//状态内容
+    private int isHappened;//是否发生
     private String statusCreatedBy;//状态提交者
     private String statusCreatedAt;//状态提交时间
     
     private String errorMessage;
     
-     
+    
     public String showRisks(){
-    	riskList=riskManagementService.getAllRisks(1);
-    	request.setAttribute("riskList", riskList);
-    	for(Risk risk:riskList){
-    		riskInfo=risk.getInfo();
-    	}
+    	riskList=riskManagementService.getAllRisks(Integer.parseInt(projectId));	
+    	riskTypeList=riskManagementService.getAllRiskTypes((int) this.getSession().get("userId"));
         return SUCCESS;
     }
-    
-    
-    public String addRisk(){
-    	riskList=riskManagementService.getAllRisks(Integer.parseInt(projectId));
-    	request.setAttribute("riskList", riskList);
-    	return SUCCESS;
-    }
-
  
     /**
      * 添加一个风险项
      * @return
      */
     public String add(){
+    	
         if(!this.validateRiskForm()){
             return ERROR;
         }
         Risk risk = new Risk();
         risk.setProjectId(Integer.parseInt(projectId));
+        risk.setRiskTypeId(Integer.parseInt(riskTypeId));
         risk.setInfo(riskInfo);
         risk.setProbability(Level.fromCode(transform(riskProbability)));
         risk.setImpact(Level.fromCode(transform(riskImpact)));
@@ -96,6 +94,7 @@ public class RiskAction extends BaseAction{
 		}
         
 		Risk risk = riskManagementService.getRiskById(Integer.parseInt(riskId));
+		risk.setRiskTypeId(Integer.parseInt(riskTypeId));
 		risk.setInfo(riskInfo);
 		risk.setProbability(Level.fromCode(transform(riskProbability)));
 		risk.setImpact(Level.fromCode(transform(riskImpact)));
@@ -137,15 +136,12 @@ public class RiskAction extends BaseAction{
         return valid;
     }
     
-    
     /**
      * 查看某个项目某风险项的状态跟踪
      * @return
      */
     public String statusTracking(){
-    	
-    	riskStatusList=riskManagementService.getAllRiskStatusByRiskId(1);
-    	request.setAttribute("riskStatusList", riskStatusList);
+    	riskStatusList=riskManagementService.getAllRiskStatusByRiskId(Integer.parseInt(riskId));
     	return SUCCESS;
     }
     
@@ -158,10 +154,11 @@ public class RiskAction extends BaseAction{
             return ERROR;
         }
         RiskStatus riskStatus = new RiskStatus();
-        riskStatus.setRiskId(1);
+        riskStatus.setRiskId(Integer.parseInt(riskId));
         riskStatus.setInfo(statusInfo);
+        riskStatus.setIsHappened(isHappened);
         riskStatus.setCreatedAt(new Date());
-        riskStatus.setCreatedBy(2);
+        riskStatus.setCreatedBy((int) this.getSession().get("userId"));
         riskManagementService.createRiskStatus(riskStatus);
         return SUCCESS;
     }
@@ -314,6 +311,38 @@ public class RiskAction extends BaseAction{
 
 	public void setStatusCreatedAt(String statusCreatedAt) {
 		this.statusCreatedAt = statusCreatedAt;
+	}
+
+	public String getRiskTypeInfo() {
+		return riskTypeInfo;
+	}
+
+	public void setRiskTypeInfo(String riskTypeInfo) {
+		this.riskTypeInfo = riskTypeInfo;
+	}
+
+	public String getRiskTypeId() {
+		return riskTypeId;
+	}
+
+	public void setRiskTypeId(String riskTypeId) {
+		this.riskTypeId = riskTypeId;
+	}
+
+	public List<RiskType> getRiskTypeList() {
+		return riskTypeList;
+	}
+
+	public void setRiskTypeList(List<RiskType> riskTypeList) {
+		this.riskTypeList = riskTypeList;
+	}
+
+	public int getIsHappened() {
+		return isHappened;
+	}
+
+	public void setIsHappened(int isHappened) {
+		this.isHappened = isHappened;
 	}
      
 }

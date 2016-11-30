@@ -33,15 +33,8 @@
           	<result name="success" type="redirect">showProjects</result>
           </action>
           
-          <!-- Programmer -->
-          <action name="Programmer" class="RiskAction" method="showRisks">
-          	<result name="success" type="redirect">manageRisk</result>
-          </action>
-          
-          
-          
           <action name="showProjects" class="ProjectAction" method="showProjects">
-          	<result name="success">/view/Projects.jsp</result>
+          	<result name="success">/view/ProjectRA.jsp</result>
           </action>
           
           <action name="addProject" class="ProjectAction" method="addProject">
@@ -49,26 +42,72 @@
           	<result name="error" type="redirect">showProjects</result>
           </action>
           
-          
           <action name="manageRisk" class="RiskAction" method="showRisks">
           	<result name="success">/view/Risks.jsp</result>
           </action>
           
-          
-          <action name="addRisk" class="RiskAction" method="addRisk">
+          <action name="addRisks" class="RiskAction" method="showRisks">
           	<result name="success" >/view/AddRisk.jsp</result>
           </action>
           
-          
           <action name="add" class="RiskAction" method="add">
-          	<result name="success" type="redirect">addRisk</result>
-          	<result name="error" type="redirect">addRisk</result>
+          	<result name="success" type="redirect">addRisks</result>
+          	<result name="error" type="redirect">addRisks</result>
           </action>
-          
           
           <action name="modRisk" class="RiskAction" method="modRisk">
           	<result name="success" type="redirect">manageRisk</result>
           	<result name="error" type="redirect">manageRisk</result>
+          </action>
+          
+          <action name="showRiskStatus" class="RiskAction" method="statusTracking">
+          	<result name="success" >/view/ShowRiskStatus.jsp</result>
+          </action>
+          
+          <action name="createRA" class="ProjectAction" method="createRA">
+          	<result name="success">/view/CreateRA.jsp</result>
+          </action>
+          
+          <action name="analyse" class="ProjectAction" method="analyse">
+          	<result name="success" type="redirect">createRA</result>
+          	<result name="error" type="redirect">createRA</result>
+          </action>
+          
+          <action name="importMostAcknowledgedRisk" class="ProjectAction" method="importMostAcknowledgedRisk">
+          	<result name="success" type="redirect">createRA</result>
+          	<result name="error" type="redirect">createRA</result>
+          </action>
+          
+          <action name="importMostTroubledRisk" class="ProjectAction" method="importMostTroubledRisk">
+          	<result name="success" type="redirect">createRA</result>
+          	<result name="error" type="redirect">createRA</result>
+          </action>
+          
+          <action name="modRiskPlanItem" class="ProjectAction" method="modRiskPlanItem">
+          	<result name="success" type="redirect">createRA</result>
+          	<result name="error" type="redirect">createRA</result>
+          </action>
+          
+          <action name="addRiskPlanItem" class="ProjectAction" method="addRiskPlanItem">
+          	<result name="success" type="redirect">createRA</result>
+          	<result name="error" type="redirect">createRA</result>
+          </action>
+          
+          <action name="saveRA" class="ProjectAction" method="saveRA">
+          	<result name="success" type="redirect">showProjects</result>
+          </action>
+          
+          <!-- Programmer -->
+          <action name="Programmer" class="ProjectAction" method="showProjects">
+          	<result name="success" type="redirect">projects</result>
+          </action>
+          
+          <action name="projects" class="ProjectAction" method="showProjects">
+          	<result name="success">/view/Projects.jsp</result>
+          </action>
+          
+          <action name="showRisks" class="RiskAction" method="showRisks">
+          	<result name="success">/view/ShowRisks.jsp</result>
           </action>
           
           <action name="statusTracking" class="RiskAction" method="statusTracking">
@@ -81,13 +120,6 @@
           	<result name="error" type="redirect">statusTracking</result>
           </action>
           
-          <action name="charts" class="ChartAction" method="showChart">
-            <result name="success">/view/Test.jsp</result>
-          </action>
-          
-          <action name="chartTest" class="ChartAction" method="showChart">
-            <result name="success">/view/Test.jsp</result>
-          </action>
           
       </package>
       <!-- ajax数据 -->

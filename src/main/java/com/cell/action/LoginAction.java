@@ -10,7 +10,7 @@ import com.cell.service.UserLoginService;
 public class LoginAction extends BaseAction{
 
 	/**
-	 * 
+	 * 登录
 	 */
 	private static final long serialVersionUID = 1L;
 	
@@ -32,11 +32,11 @@ public class LoginAction extends BaseAction{
 	public String checkLogin(){
 		if(authenticate()){
 			//判断身份
-			System.out.println(id + ":" + password);
+//			System.out.println(id + ":" + password);
 			
 			if(userLoginService.signin(id, password)){
 				User user = userLoginService.getUserById(id);
-				System.out.println(user);
+//				System.out.println(user);
 				getSession().put("userId",user.getId());
 				getSession().put("userRole", user.getRole());
 				getSession().put("user", user);

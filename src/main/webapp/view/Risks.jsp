@@ -39,49 +39,41 @@
 <div class="wrapper">
 
   <header class="main-header">
-    <nav class="navbar navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="#" class="navbar-brand"><b>RiskManage</b></a>
-        </div>
-
-        <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <!-- User Account Menu -->
-            <li class="dropdown user user-menu">
-              <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <!-- The user image in the navbar-->
-                <img src="" class="user-image" alt="User Image">
-                <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">Alexander Pierce</span>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- The user image in the menu -->
-                <li class="user-header">
-                  <img src="" class="img-circle" alt="User Image">
-
-                  <p>
-                    Alexander Pierce - Web Developer
-                    <small>Member since Nov. 2012</small>
-                  </p>
-                </li>
-                
-                <!-- Menu Footer-->
-                <li class="user-footer">
-                  <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <!-- /.navbar-custom-menu -->
-      </div>
-      <!-- /.container-fluid -->
-    </nav>
+  	<nav class="navbar navbar-static-top">
+  		<div class="container">
+  			<div class="navbar-header">
+  				<a href="#" class="navbar-brand"><b>RiskManageProject</b></a>
+  			</div>
+  			
+  			<!-- Navbar Right Menu -->
+  			<div class="navbar-custom-menu">
+  				<ul class="nav navbar-nav">
+  				<!-- User Account Menu -->
+  					<li class="dropdown user user-menu">
+  						<!-- Menu Toggle Button -->
+  						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  							<span class="hidden-xs">Manager</span>
+  						</a>
+  						<ul class="dropdown-menu">
+  							<!-- The user image in the menu -->
+  							<li class="user-header">
+  								<img alt="User Image" src="/RMP/bootstrap/AdminLTE-2.3.7/dist/img/user2-160x160.jpg">
+  								<p>Manager - Web Developer
+  									<small>Member since Nov. 2012</small>
+  								</p>
+  							</li>
+  							<!-- Menu Footer-->
+  							<li class="user-footer">
+  								<div class="pull-right">
+  									<a href="/RMP/view/Login.jsp" class="btn btn-default btn-flat">Sign out</a>
+  								</div>
+  							</li>
+  						</ul>
+  					</li>
+  				</ul>
+  			</div><!-- /.navbar-custom-menu -->
+  		</div><!-- /.container -->
+  	</nav>
   </header>
   
   
@@ -96,7 +88,7 @@
       	<h1>
       		<small>
       			<ol class="breadcrumb pull-right">
-      				<li><a href="/RMP/webpage/showProjects"><i class="fa fa-dashboard"></i> 项目</a></li>
+      				<li><a href="/RMP/webpage/showProjects"><i class="fa fa-dashboard"></i> Projects&RA</a></li>
       				<li class="active"> 项目风险</li>
       			</ol>
       		</small>
@@ -109,8 +101,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">项目<input type="hidden" id="projectId" name="projectId"/>的风险项</h3>
-              <a href="/RMP/webpage/addRisk" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+              <h3 class="box-title">项目${projectId}的风险项</h3>
             </div>
             <!-- /.box-header -->
             
@@ -125,7 +116,7 @@
                   <th>触发器／阈值</th>
                   <th>提交时间</th>
                   <th>提交者</th>
-                  <th>状态跟踪</th>
+                  <th>状态详情</th>
                   <th>跟踪者</th>
                   <th>Modify</th>
                 </tr>
@@ -140,7 +131,7 @@
                 		<td><s:property value="trigger"/></td>
                 		<td><s:property value="createdAt"/></td>
                 		<td><s:property value="createdBy"/></td>
-                		<td><a href="/RMP/view/statusTracking">状态跟踪</a></td>
+                		<td><a href="/RMP/view/showRiskStatus?riskId=${id}">状态详情</a></td>
                 		<td><s:property value="followedBy"/></td>
                 		<td>
                 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#${id }"><span class="glyphicon glyphicon-edit"></span></button>
@@ -163,6 +154,12 @@
                 											</div>
                 										</div>
                 										<div class="row form-group col-md-12">
+                											<s:label class="control-label col-md-3" value="risk类型:"/>
+                											<div class="col-md-9">
+                											<input class="form-control" id="riskTypeId" name="riskTypeId" type="text" value="${riskTypeId}">
+                											</div>
+                										</div>
+                										<div class="row form-group col-md-12">
                 											<s:label class="control-label col-md-3" value="risk内容:"/>
                 											<div class="col-md-9">
                 											<input id="riskInfo" name="riskInfo" type="text" class="form-control" value="${info}"/>
@@ -171,19 +168,19 @@
                 										<div class="row form-group col-md-12">
                 											<s:label class="control-label col-md-3" value="risk可能性:"/>
                 											<div class="col-md-9">
-                											<input id="riskProbability" name="riskProbability" type="text" class="form-control" value="${probability}" placeholder=""/>
+                											<input id="riskProbability" name="riskProbability" type="text" class="form-control" value="${probability}"/>
                 											</div>
                 										</div>
                 										<div class="row form-group col-md-12">
                 											<s:label class="control-label col-md-3" value="risk影响程度:"/>
                 											<div class="col-md-9">
-                											<input id="riskImpact" name="riskImpact" type="text" class="form-control" value="${impact}" placeholder=""/>
+                											<input id="riskImpact" name="riskImpact" type="text" class="form-control" value="${impact}"/>
                 											</div>
                 										</div>
                 										<div class="row form-group col-md-12">
                 											<s:label class="control-label col-md-3" value="risk触发器:"/>
                 											<div class="col-md-9">
-                											<input id="riskTrigger" name="riskTrigger" type="text" class="form-control" value="${trigger}" placeholder=""/>
+                											<input id="riskTrigger" name="riskTrigger" type="text" class="form-control" value="${trigger}"/>
                 											</div>
                 										</div>
                 										<div class="row form-group col-md-12">
@@ -221,8 +218,12 @@
                 </s:iterator>
                 </tbody>
               </table>
-            </div>
-            <!-- /.box-body -->
+            </div><!-- /.box-body -->
+            
+            <div class="box-footer">
+            	<a href="/RMP/webpage/addRisks" class="btn btn-default btn-sm bt-flat pull-right"><i class="fa fa-plus"></i>Add A Risk</a>
+            </div><!-- /.box-footer -->
+            
           </div>
           <!-- /.box -->
 
@@ -264,4 +265,3 @@
 </script>
 </body>
 </html>
-

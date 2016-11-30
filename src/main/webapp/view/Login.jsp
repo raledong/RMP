@@ -34,33 +34,29 @@
 
 
 
- 
-  
-  
-<body>
-<div class="wrapper">
-      <div id="main-content">
-			
-			
-			<div class="section">
-				<div class="container">
-					<s:form class="form-signin" accept-charset="UTF-8" action="/webpage/authenticate" method="POST">
-					
-					<h2 class="form-signin-heading">Please sign in</h2>
-					
-					<s:textfield name="id" class="form-control" placeholder="账号"/>
-        			<s:password name="password" class="form-control" placeholder="密码"/>
-        			<s:submit class="btn btn-lg btn-primary btn-block" value="登陆" />
-					
-					
-					</s:form>
-				</div>
-			</div>
-			
-		</div>
 
-</div>
-<!-- ./wrapper -->
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>RiskManagementProject</b></a>
+  </div><!-- /.login-logo -->
+  
+  <div class="login-box-body">
+  	<p class="login-box-msg">Sign in to start your session</p>
+    
+    
+    <s:form class="form-signin" accept-charset="UTF-8" action="/webpage/authenticate" method="POST">
+    	<div class="form-group has-feedback">
+    		<input type="text" name="id" class="form-control" placeholder="账号">
+    	</div>
+    	<div class="form-group has-feedback">
+    		<input type="password" name="password" class="form-control" placeholder="密码">
+    	</div>
+    	
+    	<s:submit class="btn btn-primary btn-block btn-flat pull-right" value="登录" />
+    </s:form>
+    </div>
+    </div>
 
 <!-- jQuery 2.2.3 -->
 <script src="/RMP/bootstrap/AdminLTE-2.3.7/plugins/jQuery/jquery-2.2.3.min.js"></script>
