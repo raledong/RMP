@@ -110,6 +110,7 @@
 			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">风险分析</h3>
+					<a class="btn btn-default btn-sm bt-flat pull-right" href="/RMP/webpage/showChart"><i class="fa fa-eye"></i>查看分析图</a>
 				</div><!-- /.box-header -->
 				
 				<div class="box-body">

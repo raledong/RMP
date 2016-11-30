@@ -1,8 +1,8 @@
 package com.cell.action;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -21,74 +21,62 @@ public class ChartAction extends BaseAction {
 	@Autowired
     private RiskAnalyseService riskAnalyseService;
 	
-	private String dateRange;
-	private List<RiskAnalyseModel> acknowledged;
-	private List<RiskAnalyseModel> troubled;
+	private List<RiskAnalyseModel> top5AcknowledgedRisks;
+	private List<RiskAnalyseModel> top5TroubledRisks;
+	
+	private Date startTime;
+    private Date endTime;
 
 	public String showChart() {
-		Date endDate = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar date = Calendar.getInstance();
-		date.setTime(endDate);
-		date.set(Calendar.DATE, date.get(Calendar.DATE) - 7);
-		Date startDate = new Date();
-		try {
-			startDate = sdf.parse(sdf.format(date.getTime()));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(startDate+" - "+endDate);
-		acknowledged = riskAnalyseService.getTop5AcknowledgedRisks(startDate, endDate);
-		troubled = riskAnalyseService.getTop5TroubledRisks(startDate, endDate);
-		if(acknowledged.isEmpty())System.out.println("空");
-		else System.out.println(acknowledged.get(0).getRiskType().getInfo());
-		request.setAttribute("acknowledged", acknowledged);
-		request.setAttribute("troubled", troubled);
 		return SUCCESS;
 	}
 	
-	public String refreshChart() {
-		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
-		String start, end;
-		Date startDate = new Date(), endDate = new Date();
-		start = dateRange.split("-")[0].trim();
-		end = dateRange.split("-")[1].trim();
-		try {
-			startDate = sdf.parse(start);
-			endDate = sdf.parse(end);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		acknowledged = riskAnalyseService.getTop5AcknowledgedRisks(startDate, endDate);
-		troubled = riskAnalyseService.getTop5TroubledRisks(startDate, endDate);
-		request.setAttribute("acknowledged", acknowledged);
-		request.setAttribute("troubled", troubled);acknowledged.size();
+	public String analyseRisk() {
+		startTime=stringToDate(request.getParameter("startTime"));
+    	endTime=stringToDate(request.getParameter("endTime"));
+    	top5AcknowledgedRisks=riskAnalyseService.getTop5AcknowledgedRisks(startTime, endTime);
+    	top5TroubledRisks=riskAnalyseService.getTop5TroubledRisks(startTime, endTime);
+    	
+    	System.out.println("top5AcknowledgedRisks"+top5AcknowledgedRisks.get(0).getRiskType().getInfo());
+    	
+    	if(startTime==null||startTime.equals("")||endTime==null||endTime.equals("")){
+    		System.out.println("date错误！！！");
+    		return ERROR;
+    	}
 		return SUCCESS;
 	}
 	
-	public String getDateRange() {
-		return dateRange;
+	/**
+     * string转date
+     * @param str
+     * @return
+     */
+    public Date stringToDate(String str) {  
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
+        Date date = null;  
+        try {
+        	date = sdf.parse(str);   
+        } catch (ParseException e) {  
+            e.printStackTrace();  
+        }
+        date = java.sql.Date.valueOf(str);
+        return date;  
+    }
+
+	public List<RiskAnalyseModel> getTop5AcknowledgedRisks() {
+		return top5AcknowledgedRisks;
 	}
 
-	public void setDateRange(String dateRange) {
-		this.dateRange = dateRange;
+	public void setTop5AcknowledgedRisks(List<RiskAnalyseModel> top5AcknowledgedRisks) {
+		this.top5AcknowledgedRisks = top5AcknowledgedRisks;
 	}
 
-	public List<RiskAnalyseModel> getAcknowledged() {
-		return acknowledged;
+	public List<RiskAnalyseModel> getTop5TroubledRisks() {
+		return top5TroubledRisks;
 	}
 
-	public void setAcknowledged(List<RiskAnalyseModel> acknowledged) {
-		this.acknowledged = acknowledged;
+	public void setTop5TroubledRisks(List<RiskAnalyseModel> top5TroubledRisks) {
+		this.top5TroubledRisks = top5TroubledRisks;
 	}
-
-	public List<RiskAnalyseModel> getTroubled() {
-		return troubled;
-	}
-
-	public void setTroubled(List<RiskAnalyseModel> troubled) {
-		this.troubled = troubled;
-	}
+	
 }

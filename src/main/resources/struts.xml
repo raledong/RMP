@@ -68,6 +68,15 @@
           	<result name="success">/view/CreateRA.jsp</result>
           </action>
           
+          <action name="showChart" class="ChartAction" method="showChart">
+          	<result name="success">/view/Chart.jsp</result>
+          </action>
+          
+          <action name="analyseRisk" class="ChartAction" method="analyseRisk">
+          	<result name="success" type="redirect">showChart</result>
+          	<result name="error" type="redirect">showChart</result>
+          </action>
+          
           <action name="analyse" class="ProjectAction" method="analyse">
           	<result name="success" type="redirect">createRA</result>
           	<result name="error" type="redirect">createRA</result>
