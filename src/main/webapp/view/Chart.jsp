@@ -203,7 +203,7 @@ $(function () {
      
     var bar_data = {
       data: [["${top5AcknowledgedRisks.get(0).getRiskType().getInfo()}", "${top5AcknowledgedRisks.get(0).getCount()}"], 
-             ["${top5AcknowledgedRisks.get(1).getRiskType().getInfo()}","${top5AcknowledgedRisks.get(1).getCount()}"], 
+             ["${top5AcknowledgedRisks.get(1).getRiskType().getInfo()}", "${top5AcknowledgedRisks.get(1).getCount()}"], 
              ["${top5AcknowledgedRisks.get(2).getRiskType().getInfo()}", "${top5AcknowledgedRisks.get(2).getCount()}"], 
              ["${top5AcknowledgedRisks.get(3).getRiskType().getInfo()}", "${top5AcknowledgedRisks.get(3).getCount()}"], 
              ["${top5AcknowledgedRisks.get(4).getRiskType().getInfo()}", "${top5AcknowledgedRisks.get(4).getCount()}"]],
